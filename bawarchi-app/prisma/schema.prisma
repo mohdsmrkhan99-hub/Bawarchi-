@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Restaurant {
+  id        String   @id @default(uuid())
+  name      String
+  code      String   @unique
+  phone     String?
+  email     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  branches  Branch[]
+  staff     Staff[]
+}
+
+model Branch {
+  id           String     @id @default(uuid())
+  restaurantId String
+  name         String
+  code         String
+  address      String?
+  phone        String?
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  sections     Section[]
+  staff        Staff[]
+
+  @@unique([restaurantId, code])
+  @@index([restaurantId])
+}
+
+model Section {
+  id           String        @id @default(uuid())
+  branchId     String
+  name         String
+  description  String?
+  displayOrder Int           @default(0)
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tables       DiningTable[]
+  branch       Branch        @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@index([branchId])
+}
+
+model DiningTable {
+  id           String      @id @default(uuid())
+  sectionId    String
+  tableNumber  String
+  name         String?
+  capacity     Int         @default(4)
+  status       TableStatus @default(AVAILABLE)
+  displayOrder Int         @default(0)
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  section      Section     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, tableNumber])
+  @@index([sectionId])
+  @@index([status])
+}
+
+model Staff {
+  id           String      @id @default(uuid())
+  restaurantId String
+  branchId     String?
+  username     String
+  fullName     String
+  phone        String?
+  email        String?
+  passwordHash String?
+  status       StaffStatus @default(ACTIVE)
+  lastLoginAt  DateTime?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  branch       Branch?     @relation(fields: [branchId], references: [id])
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  roles        StaffRole[]
+
+  @@unique([restaurantId, username])
+  @@index([restaurantId])
+  @@index([branchId])
+}
+
+model Role {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  description String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  staff       StaffRole[]
+}
+
+model StaffRole {
+  staffId String
+  roleId  String
+  role    Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  staff   Staff  @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@id([staffId, roleId])
+  @@index([roleId])
+}
+
+enum StaffStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum TableStatus {
+  AVAILABLE
+  OCCUPIED
+  RESERVED
+  PREPARING
+  BILL_REQUESTED
+  CLEANING
+  OUT_OF_SERVICE
+}

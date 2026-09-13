@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "dexie": "^4.4.6",
+    "dexie-react-hooks": "^4.4.0",
+    "lucide-react": "^1.45.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
