@@ -1,3 +1,0 @@
-ALTER TABLE "MenuItem"
-ADD COLUMN "imageUrl" TEXT,
-ADD COLUMN "isVegetarian" BOOLEAN NOT NULL DEFAULT false;

@@ -1,0 +1,4 @@
+
+# Local recovery backups
+bawarchi-backup-*/
+bawarchi-current-before-restore-*/
