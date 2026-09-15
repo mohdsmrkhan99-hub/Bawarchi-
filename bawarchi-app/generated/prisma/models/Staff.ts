@@ -238,9 +238,13 @@ export type StaffWhereInput = {
   lastLoginAt?: Prisma.DateTimeNullableFilter<"Staff"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Staff"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Staff"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  createdOrders?: Prisma.OrderListRelationFilter
+  updatedOrders?: Prisma.OrderListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchNullableScalarRelationFilter, Prisma.BranchWhereInput> | null
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
   roles?: Prisma.StaffRoleListRelationFilter
+  tableOperations?: Prisma.TableOperationListRelationFilter
 }
 
 export type StaffOrderByWithRelationInput = {
@@ -256,9 +260,13 @@ export type StaffOrderByWithRelationInput = {
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  createdOrders?: Prisma.OrderOrderByRelationAggregateInput
+  updatedOrders?: Prisma.OrderOrderByRelationAggregateInput
   branch?: Prisma.BranchOrderByWithRelationInput
   restaurant?: Prisma.RestaurantOrderByWithRelationInput
   roles?: Prisma.StaffRoleOrderByRelationAggregateInput
+  tableOperations?: Prisma.TableOperationOrderByRelationAggregateInput
 }
 
 export type StaffWhereUniqueInput = Prisma.AtLeast<{
@@ -278,9 +286,13 @@ export type StaffWhereUniqueInput = Prisma.AtLeast<{
   lastLoginAt?: Prisma.DateTimeNullableFilter<"Staff"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Staff"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Staff"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  createdOrders?: Prisma.OrderListRelationFilter
+  updatedOrders?: Prisma.OrderListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchNullableScalarRelationFilter, Prisma.BranchWhereInput> | null
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
   roles?: Prisma.StaffRoleListRelationFilter
+  tableOperations?: Prisma.TableOperationListRelationFilter
 }, "id" | "restaurantId_username">
 
 export type StaffOrderByWithAggregationInput = {
@@ -330,9 +342,13 @@ export type StaffCreateInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
   branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
   roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffUncheckedCreateInput = {
@@ -348,7 +364,11 @@ export type StaffUncheckedCreateInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
   roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffUpdateInput = {
@@ -362,9 +382,13 @@ export type StaffUpdateInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
   branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
   roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateInput = {
@@ -380,7 +404,11 @@ export type StaffUncheckedUpdateInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
   roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffCreateManyInput = {
@@ -434,6 +462,11 @@ export type StaffListRelationFilter = {
 
 export type StaffOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type StaffNullableScalarRelationFilter = {
+  is?: Prisma.StaffWhereInput | null
+  isNot?: Prisma.StaffWhereInput | null
 }
 
 export type StaffRestaurantIdUsernameCompoundUniqueInput = {
@@ -575,12 +608,44 @@ export type StaffUncheckedUpdateManyWithoutBranchNestedInput = {
   deleteMany?: Prisma.StaffScalarWhereInput | Prisma.StaffScalarWhereInput[]
 }
 
+export type StaffCreateNestedOneWithoutTableOperationsInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutTableOperationsInput, Prisma.StaffUncheckedCreateWithoutTableOperationsInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutTableOperationsInput
+  connect?: Prisma.StaffWhereUniqueInput
+}
+
+export type StaffUpdateOneWithoutTableOperationsNestedInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutTableOperationsInput, Prisma.StaffUncheckedCreateWithoutTableOperationsInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutTableOperationsInput
+  upsert?: Prisma.StaffUpsertWithoutTableOperationsInput
+  disconnect?: Prisma.StaffWhereInput | boolean
+  delete?: Prisma.StaffWhereInput | boolean
+  connect?: Prisma.StaffWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StaffUpdateToOneWithWhereWithoutTableOperationsInput, Prisma.StaffUpdateWithoutTableOperationsInput>, Prisma.StaffUncheckedUpdateWithoutTableOperationsInput>
+}
+
 export type EnumStaffStatusFieldUpdateOperationsInput = {
   set?: $Enums.StaffStatus
 }
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
+}
+
+export type StaffCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutAuditLogsInput, Prisma.StaffUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.StaffWhereUniqueInput
+}
+
+export type StaffUpdateOneWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutAuditLogsInput, Prisma.StaffUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.StaffUpsertWithoutAuditLogsInput
+  disconnect?: Prisma.StaffWhereInput | boolean
+  delete?: Prisma.StaffWhereInput | boolean
+  connect?: Prisma.StaffWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StaffUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.StaffUpdateWithoutAuditLogsInput>, Prisma.StaffUncheckedUpdateWithoutAuditLogsInput>
 }
 
 export type StaffCreateNestedOneWithoutRolesInput = {
@@ -597,6 +662,38 @@ export type StaffUpdateOneRequiredWithoutRolesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StaffUpdateToOneWithWhereWithoutRolesInput, Prisma.StaffUpdateWithoutRolesInput>, Prisma.StaffUncheckedUpdateWithoutRolesInput>
 }
 
+export type StaffCreateNestedOneWithoutCreatedOrdersInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutCreatedOrdersInput, Prisma.StaffUncheckedCreateWithoutCreatedOrdersInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutCreatedOrdersInput
+  connect?: Prisma.StaffWhereUniqueInput
+}
+
+export type StaffCreateNestedOneWithoutUpdatedOrdersInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedCreateWithoutUpdatedOrdersInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutUpdatedOrdersInput
+  connect?: Prisma.StaffWhereUniqueInput
+}
+
+export type StaffUpdateOneWithoutCreatedOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutCreatedOrdersInput, Prisma.StaffUncheckedCreateWithoutCreatedOrdersInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutCreatedOrdersInput
+  upsert?: Prisma.StaffUpsertWithoutCreatedOrdersInput
+  disconnect?: Prisma.StaffWhereInput | boolean
+  delete?: Prisma.StaffWhereInput | boolean
+  connect?: Prisma.StaffWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StaffUpdateToOneWithWhereWithoutCreatedOrdersInput, Prisma.StaffUpdateWithoutCreatedOrdersInput>, Prisma.StaffUncheckedUpdateWithoutCreatedOrdersInput>
+}
+
+export type StaffUpdateOneWithoutUpdatedOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.StaffCreateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedCreateWithoutUpdatedOrdersInput>
+  connectOrCreate?: Prisma.StaffCreateOrConnectWithoutUpdatedOrdersInput
+  upsert?: Prisma.StaffUpsertWithoutUpdatedOrdersInput
+  disconnect?: Prisma.StaffWhereInput | boolean
+  delete?: Prisma.StaffWhereInput | boolean
+  connect?: Prisma.StaffWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StaffUpdateToOneWithWhereWithoutUpdatedOrdersInput, Prisma.StaffUpdateWithoutUpdatedOrdersInput>, Prisma.StaffUncheckedUpdateWithoutUpdatedOrdersInput>
+}
+
 export type StaffCreateWithoutRestaurantInput = {
   id?: string
   username: string
@@ -608,8 +705,12 @@ export type StaffCreateWithoutRestaurantInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
   branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
   roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffUncheckedCreateWithoutRestaurantInput = {
@@ -624,7 +725,11 @@ export type StaffUncheckedCreateWithoutRestaurantInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
   roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffCreateOrConnectWithoutRestaurantInput = {
@@ -682,8 +787,12 @@ export type StaffCreateWithoutBranchInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
   roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffUncheckedCreateWithoutBranchInput = {
@@ -698,7 +807,11 @@ export type StaffUncheckedCreateWithoutBranchInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
   roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffCreateOrConnectWithoutBranchInput = {
@@ -727,6 +840,190 @@ export type StaffUpdateManyWithWhereWithoutBranchInput = {
   data: Prisma.XOR<Prisma.StaffUpdateManyMutationInput, Prisma.StaffUncheckedUpdateManyWithoutBranchInput>
 }
 
+export type StaffCreateWithoutTableOperationsInput = {
+  id?: string
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
+  roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+}
+
+export type StaffUncheckedCreateWithoutTableOperationsInput = {
+  id?: string
+  restaurantId: string
+  branchId?: string | null
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+}
+
+export type StaffCreateOrConnectWithoutTableOperationsInput = {
+  where: Prisma.StaffWhereUniqueInput
+  create: Prisma.XOR<Prisma.StaffCreateWithoutTableOperationsInput, Prisma.StaffUncheckedCreateWithoutTableOperationsInput>
+}
+
+export type StaffUpsertWithoutTableOperationsInput = {
+  update: Prisma.XOR<Prisma.StaffUpdateWithoutTableOperationsInput, Prisma.StaffUncheckedUpdateWithoutTableOperationsInput>
+  create: Prisma.XOR<Prisma.StaffCreateWithoutTableOperationsInput, Prisma.StaffUncheckedCreateWithoutTableOperationsInput>
+  where?: Prisma.StaffWhereInput
+}
+
+export type StaffUpdateToOneWithWhereWithoutTableOperationsInput = {
+  where?: Prisma.StaffWhereInput
+  data: Prisma.XOR<Prisma.StaffUpdateWithoutTableOperationsInput, Prisma.StaffUncheckedUpdateWithoutTableOperationsInput>
+}
+
+export type StaffUpdateWithoutTableOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
+  roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+}
+
+export type StaffUncheckedUpdateWithoutTableOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+}
+
+export type StaffCreateWithoutAuditLogsInput = {
+  id?: string
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
+  roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  restaurantId: string
+  branchId?: string | null
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.StaffWhereUniqueInput
+  create: Prisma.XOR<Prisma.StaffCreateWithoutAuditLogsInput, Prisma.StaffUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type StaffUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.StaffUpdateWithoutAuditLogsInput, Prisma.StaffUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.StaffCreateWithoutAuditLogsInput, Prisma.StaffUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.StaffWhereInput
+}
+
+export type StaffUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.StaffWhereInput
+  data: Prisma.XOR<Prisma.StaffUpdateWithoutAuditLogsInput, Prisma.StaffUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type StaffUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
+  roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
+}
+
+export type StaffUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
+}
+
 export type StaffCreateWithoutRolesInput = {
   id?: string
   username: string
@@ -738,8 +1035,12 @@ export type StaffCreateWithoutRolesInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
   branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffUncheckedCreateWithoutRolesInput = {
@@ -755,6 +1056,10 @@ export type StaffUncheckedCreateWithoutRolesInput = {
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
 }
 
 export type StaffCreateOrConnectWithoutRolesInput = {
@@ -784,8 +1089,12 @@ export type StaffUpdateWithoutRolesInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
   branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateWithoutRolesInput = {
@@ -801,6 +1110,194 @@ export type StaffUncheckedUpdateWithoutRolesInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
+}
+
+export type StaffCreateWithoutCreatedOrdersInput = {
+  id?: string
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  updatedOrders?: Prisma.OrderCreateNestedManyWithoutUpdatedByInput
+  branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
+  roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffUncheckedCreateWithoutCreatedOrdersInput = {
+  id?: string
+  restaurantId: string
+  branchId?: string | null
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  updatedOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutUpdatedByInput
+  roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffCreateOrConnectWithoutCreatedOrdersInput = {
+  where: Prisma.StaffWhereUniqueInput
+  create: Prisma.XOR<Prisma.StaffCreateWithoutCreatedOrdersInput, Prisma.StaffUncheckedCreateWithoutCreatedOrdersInput>
+}
+
+export type StaffCreateWithoutUpdatedOrdersInput = {
+  id?: string
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderCreateNestedManyWithoutCreatedByInput
+  branch?: Prisma.BranchCreateNestedOneWithoutStaffInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutStaffInput
+  roles?: Prisma.StaffRoleCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffUncheckedCreateWithoutUpdatedOrdersInput = {
+  id?: string
+  restaurantId: string
+  branchId?: string | null
+  username: string
+  fullName: string
+  phone?: string | null
+  email?: string | null
+  passwordHash?: string | null
+  status?: $Enums.StaffStatus
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutStaffInput
+  createdOrders?: Prisma.OrderUncheckedCreateNestedManyWithoutCreatedByInput
+  roles?: Prisma.StaffRoleUncheckedCreateNestedManyWithoutStaffInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutPerformedByInput
+}
+
+export type StaffCreateOrConnectWithoutUpdatedOrdersInput = {
+  where: Prisma.StaffWhereUniqueInput
+  create: Prisma.XOR<Prisma.StaffCreateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedCreateWithoutUpdatedOrdersInput>
+}
+
+export type StaffUpsertWithoutCreatedOrdersInput = {
+  update: Prisma.XOR<Prisma.StaffUpdateWithoutCreatedOrdersInput, Prisma.StaffUncheckedUpdateWithoutCreatedOrdersInput>
+  create: Prisma.XOR<Prisma.StaffCreateWithoutCreatedOrdersInput, Prisma.StaffUncheckedCreateWithoutCreatedOrdersInput>
+  where?: Prisma.StaffWhereInput
+}
+
+export type StaffUpdateToOneWithWhereWithoutCreatedOrdersInput = {
+  where?: Prisma.StaffWhereInput
+  data: Prisma.XOR<Prisma.StaffUpdateWithoutCreatedOrdersInput, Prisma.StaffUncheckedUpdateWithoutCreatedOrdersInput>
+}
+
+export type StaffUpdateWithoutCreatedOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
+  branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
+  roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
+}
+
+export type StaffUncheckedUpdateWithoutCreatedOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
+  roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
+}
+
+export type StaffUpsertWithoutUpdatedOrdersInput = {
+  update: Prisma.XOR<Prisma.StaffUpdateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedUpdateWithoutUpdatedOrdersInput>
+  create: Prisma.XOR<Prisma.StaffCreateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedCreateWithoutUpdatedOrdersInput>
+  where?: Prisma.StaffWhereInput
+}
+
+export type StaffUpdateToOneWithWhereWithoutUpdatedOrdersInput = {
+  where?: Prisma.StaffWhereInput
+  data: Prisma.XOR<Prisma.StaffUpdateWithoutUpdatedOrdersInput, Prisma.StaffUncheckedUpdateWithoutUpdatedOrdersInput>
+}
+
+export type StaffUpdateWithoutUpdatedOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
+  roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
+}
+
+export type StaffUncheckedUpdateWithoutUpdatedOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStaffStatusFieldUpdateOperationsInput | $Enums.StaffStatus
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffCreateManyRestaurantInput = {
@@ -828,8 +1325,12 @@ export type StaffUpdateWithoutRestaurantInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
   branch?: Prisma.BranchUpdateOneWithoutStaffNestedInput
   roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateWithoutRestaurantInput = {
@@ -844,7 +1345,11 @@ export type StaffUncheckedUpdateWithoutRestaurantInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
   roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateManyWithoutRestaurantInput = {
@@ -886,8 +1391,12 @@ export type StaffUpdateWithoutBranchInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUpdateManyWithoutUpdatedByNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutStaffNestedInput
   roles?: Prisma.StaffRoleUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateWithoutBranchInput = {
@@ -902,7 +1411,11 @@ export type StaffUncheckedUpdateWithoutBranchInput = {
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutStaffNestedInput
+  createdOrders?: Prisma.OrderUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedOrders?: Prisma.OrderUncheckedUpdateManyWithoutUpdatedByNestedInput
   roles?: Prisma.StaffRoleUncheckedUpdateManyWithoutStaffNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutPerformedByNestedInput
 }
 
 export type StaffUncheckedUpdateManyWithoutBranchInput = {
@@ -925,11 +1438,19 @@ export type StaffUncheckedUpdateManyWithoutBranchInput = {
  */
 
 export type StaffCountOutputType = {
+  auditLogs: number
+  createdOrders: number
+  updatedOrders: number
   roles: number
+  tableOperations: number
 }
 
 export type StaffCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | StaffCountOutputTypeCountAuditLogsArgs
+  createdOrders?: boolean | StaffCountOutputTypeCountCreatedOrdersArgs
+  updatedOrders?: boolean | StaffCountOutputTypeCountUpdatedOrdersArgs
   roles?: boolean | StaffCountOutputTypeCountRolesArgs
+  tableOperations?: boolean | StaffCountOutputTypeCountTableOperationsArgs
 }
 
 /**
@@ -945,8 +1466,36 @@ export type StaffCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
 /**
  * StaffCountOutputType without action
  */
+export type StaffCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * StaffCountOutputType without action
+ */
+export type StaffCountOutputTypeCountCreatedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * StaffCountOutputType without action
+ */
+export type StaffCountOutputTypeCountUpdatedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * StaffCountOutputType without action
+ */
 export type StaffCountOutputTypeCountRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.StaffRoleWhereInput
+}
+
+/**
+ * StaffCountOutputType without action
+ */
+export type StaffCountOutputTypeCountTableOperationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TableOperationWhereInput
 }
 
 
@@ -963,9 +1512,13 @@ export type StaffSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  auditLogs?: boolean | Prisma.Staff$auditLogsArgs<ExtArgs>
+  createdOrders?: boolean | Prisma.Staff$createdOrdersArgs<ExtArgs>
+  updatedOrders?: boolean | Prisma.Staff$updatedOrdersArgs<ExtArgs>
   branch?: boolean | Prisma.Staff$branchArgs<ExtArgs>
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
   roles?: boolean | Prisma.Staff$rolesArgs<ExtArgs>
+  tableOperations?: boolean | Prisma.Staff$tableOperationsArgs<ExtArgs>
   _count?: boolean | Prisma.StaffCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staff"]>
 
@@ -1020,9 +1573,13 @@ export type StaffSelectScalar = {
 
 export type StaffOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "restaurantId" | "branchId" | "username" | "fullName" | "phone" | "email" | "passwordHash" | "status" | "lastLoginAt" | "createdAt" | "updatedAt", ExtArgs["result"]["staff"]>
 export type StaffInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | Prisma.Staff$auditLogsArgs<ExtArgs>
+  createdOrders?: boolean | Prisma.Staff$createdOrdersArgs<ExtArgs>
+  updatedOrders?: boolean | Prisma.Staff$updatedOrdersArgs<ExtArgs>
   branch?: boolean | Prisma.Staff$branchArgs<ExtArgs>
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
   roles?: boolean | Prisma.Staff$rolesArgs<ExtArgs>
+  tableOperations?: boolean | Prisma.Staff$tableOperationsArgs<ExtArgs>
   _count?: boolean | Prisma.StaffCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StaffIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1037,9 +1594,13 @@ export type StaffIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $StaffPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Staff"
   objects: {
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    createdOrders: Prisma.$OrderPayload<ExtArgs>[]
+    updatedOrders: Prisma.$OrderPayload<ExtArgs>[]
     branch: Prisma.$BranchPayload<ExtArgs> | null
     restaurant: Prisma.$RestaurantPayload<ExtArgs>
     roles: Prisma.$StaffRolePayload<ExtArgs>[]
+    tableOperations: Prisma.$TableOperationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1448,9 +2009,13 @@ readonly fields: StaffFieldRefs;
  */
 export interface Prisma__StaffClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  auditLogs<T extends Prisma.Staff$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  createdOrders<T extends Prisma.Staff$createdOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$createdOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  updatedOrders<T extends Prisma.Staff$updatedOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$updatedOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   branch<T extends Prisma.Staff$branchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$branchArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   restaurant<T extends Prisma.RestaurantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RestaurantDefaultArgs<ExtArgs>>): Prisma.Prisma__RestaurantClient<runtime.Types.Result.GetResult<Prisma.$RestaurantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   roles<T extends Prisma.Staff$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaffRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tableOperations<T extends Prisma.Staff$tableOperationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Staff$tableOperationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TableOperationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1893,6 +2458,78 @@ export type StaffDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Staff.auditLogs
+ */
+export type Staff$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Staff.createdOrders
+ */
+export type Staff$createdOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * Staff.updatedOrders
+ */
+export type Staff$updatedOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
  * Staff.branch
  */
 export type Staff$branchArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1933,6 +2570,30 @@ export type Staff$rolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.StaffRoleScalarFieldEnum | Prisma.StaffRoleScalarFieldEnum[]
+}
+
+/**
+ * Staff.tableOperations
+ */
+export type Staff$tableOperationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TableOperation
+   */
+  select?: Prisma.TableOperationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TableOperation
+   */
+  omit?: Prisma.TableOperationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TableOperationInclude<ExtArgs> | null
+  where?: Prisma.TableOperationWhereInput
+  orderBy?: Prisma.TableOperationOrderByWithRelationInput | Prisma.TableOperationOrderByWithRelationInput[]
+  cursor?: Prisma.TableOperationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TableOperationScalarFieldEnum | Prisma.TableOperationScalarFieldEnum[]
 }
 
 /**

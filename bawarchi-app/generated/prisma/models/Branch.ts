@@ -214,9 +214,23 @@ export type BranchWhereInput = {
   isActive?: Prisma.BoolFilter<"Branch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  bills?: Prisma.BillListRelationFilter
+  billSequence?: Prisma.XOR<Prisma.BillSequenceNullableScalarRelationFilter, Prisma.BillSequenceWhereInput> | null
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
+  floors?: Prisma.FloorListRelationFilter
+  kots?: Prisma.KOTListRelationFilter
+  kotSequence?: Prisma.XOR<Prisma.KOTSequenceNullableScalarRelationFilter, Prisma.KOTSequenceWhereInput> | null
+  menuAddOns?: Prisma.MenuAddOnListRelationFilter
+  menuCategories?: Prisma.MenuCategoryListRelationFilter
+  orders?: Prisma.OrderListRelationFilter
+  orderSequence?: Prisma.XOR<Prisma.OrderSequenceNullableScalarRelationFilter, Prisma.OrderSequenceWhereInput> | null
+  printJobs?: Prisma.PrintJobListRelationFilter
+  printers?: Prisma.PrinterListRelationFilter
+  reservations?: Prisma.ReservationListRelationFilter
   sections?: Prisma.SectionListRelationFilter
   staff?: Prisma.StaffListRelationFilter
+  tableOperations?: Prisma.TableOperationListRelationFilter
 }
 
 export type BranchOrderByWithRelationInput = {
@@ -229,9 +243,23 @@ export type BranchOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  bills?: Prisma.BillOrderByRelationAggregateInput
+  billSequence?: Prisma.BillSequenceOrderByWithRelationInput
   restaurant?: Prisma.RestaurantOrderByWithRelationInput
+  floors?: Prisma.FloorOrderByRelationAggregateInput
+  kots?: Prisma.KOTOrderByRelationAggregateInput
+  kotSequence?: Prisma.KOTSequenceOrderByWithRelationInput
+  menuAddOns?: Prisma.MenuAddOnOrderByRelationAggregateInput
+  menuCategories?: Prisma.MenuCategoryOrderByRelationAggregateInput
+  orders?: Prisma.OrderOrderByRelationAggregateInput
+  orderSequence?: Prisma.OrderSequenceOrderByWithRelationInput
+  printJobs?: Prisma.PrintJobOrderByRelationAggregateInput
+  printers?: Prisma.PrinterOrderByRelationAggregateInput
+  reservations?: Prisma.ReservationOrderByRelationAggregateInput
   sections?: Prisma.SectionOrderByRelationAggregateInput
   staff?: Prisma.StaffOrderByRelationAggregateInput
+  tableOperations?: Prisma.TableOperationOrderByRelationAggregateInput
 }
 
 export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -248,9 +276,23 @@ export type BranchWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Branch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  bills?: Prisma.BillListRelationFilter
+  billSequence?: Prisma.XOR<Prisma.BillSequenceNullableScalarRelationFilter, Prisma.BillSequenceWhereInput> | null
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
+  floors?: Prisma.FloorListRelationFilter
+  kots?: Prisma.KOTListRelationFilter
+  kotSequence?: Prisma.XOR<Prisma.KOTSequenceNullableScalarRelationFilter, Prisma.KOTSequenceWhereInput> | null
+  menuAddOns?: Prisma.MenuAddOnListRelationFilter
+  menuCategories?: Prisma.MenuCategoryListRelationFilter
+  orders?: Prisma.OrderListRelationFilter
+  orderSequence?: Prisma.XOR<Prisma.OrderSequenceNullableScalarRelationFilter, Prisma.OrderSequenceWhereInput> | null
+  printJobs?: Prisma.PrintJobListRelationFilter
+  printers?: Prisma.PrinterListRelationFilter
+  reservations?: Prisma.ReservationListRelationFilter
   sections?: Prisma.SectionListRelationFilter
   staff?: Prisma.StaffListRelationFilter
+  tableOperations?: Prisma.TableOperationListRelationFilter
 }, "id" | "restaurantId_code">
 
 export type BranchOrderByWithAggregationInput = {
@@ -292,9 +334,23 @@ export type BranchCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateInput = {
@@ -307,8 +363,22 @@ export type BranchUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUpdateInput = {
@@ -320,9 +390,23 @@ export type BranchUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateInput = {
@@ -335,8 +419,22 @@ export type BranchUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateManyInput = {
@@ -477,6 +575,48 @@ export type BranchUncheckedUpdateManyWithoutRestaurantNestedInput = {
   deleteMany?: Prisma.BranchScalarWhereInput | Prisma.BranchScalarWhereInput[]
 }
 
+export type BranchCreateNestedOneWithoutMenuCategoriesInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutMenuCategoriesInput, Prisma.BranchUncheckedCreateWithoutMenuCategoriesInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutMenuCategoriesInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutMenuCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutMenuCategoriesInput, Prisma.BranchUncheckedCreateWithoutMenuCategoriesInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutMenuCategoriesInput
+  upsert?: Prisma.BranchUpsertWithoutMenuCategoriesInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutMenuCategoriesInput, Prisma.BranchUpdateWithoutMenuCategoriesInput>, Prisma.BranchUncheckedUpdateWithoutMenuCategoriesInput>
+}
+
+export type BranchCreateNestedOneWithoutMenuAddOnsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutMenuAddOnsInput, Prisma.BranchUncheckedCreateWithoutMenuAddOnsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutMenuAddOnsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutMenuAddOnsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutMenuAddOnsInput, Prisma.BranchUncheckedCreateWithoutMenuAddOnsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutMenuAddOnsInput
+  upsert?: Prisma.BranchUpsertWithoutMenuAddOnsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutMenuAddOnsInput, Prisma.BranchUpdateWithoutMenuAddOnsInput>, Prisma.BranchUncheckedUpdateWithoutMenuAddOnsInput>
+}
+
+export type BranchCreateNestedOneWithoutFloorsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutFloorsInput, Prisma.BranchUncheckedCreateWithoutFloorsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutFloorsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutFloorsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutFloorsInput, Prisma.BranchUncheckedCreateWithoutFloorsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutFloorsInput
+  upsert?: Prisma.BranchUpsertWithoutFloorsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutFloorsInput, Prisma.BranchUpdateWithoutFloorsInput>, Prisma.BranchUncheckedUpdateWithoutFloorsInput>
+}
+
 export type BranchCreateNestedOneWithoutSectionsInput = {
   create?: Prisma.XOR<Prisma.BranchCreateWithoutSectionsInput, Prisma.BranchUncheckedCreateWithoutSectionsInput>
   connectOrCreate?: Prisma.BranchCreateOrConnectWithoutSectionsInput
@@ -489,6 +629,34 @@ export type BranchUpdateOneRequiredWithoutSectionsNestedInput = {
   upsert?: Prisma.BranchUpsertWithoutSectionsInput
   connect?: Prisma.BranchWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutSectionsInput, Prisma.BranchUpdateWithoutSectionsInput>, Prisma.BranchUncheckedUpdateWithoutSectionsInput>
+}
+
+export type BranchCreateNestedOneWithoutReservationsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutReservationsInput, Prisma.BranchUncheckedCreateWithoutReservationsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutReservationsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutReservationsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutReservationsInput, Prisma.BranchUncheckedCreateWithoutReservationsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutReservationsInput
+  upsert?: Prisma.BranchUpsertWithoutReservationsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutReservationsInput, Prisma.BranchUpdateWithoutReservationsInput>, Prisma.BranchUncheckedUpdateWithoutReservationsInput>
+}
+
+export type BranchCreateNestedOneWithoutTableOperationsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutTableOperationsInput, Prisma.BranchUncheckedCreateWithoutTableOperationsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutTableOperationsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutTableOperationsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutTableOperationsInput, Prisma.BranchUncheckedCreateWithoutTableOperationsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutTableOperationsInput
+  upsert?: Prisma.BranchUpsertWithoutTableOperationsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutTableOperationsInput, Prisma.BranchUpdateWithoutTableOperationsInput>, Prisma.BranchUncheckedUpdateWithoutTableOperationsInput>
 }
 
 export type BranchCreateNestedOneWithoutStaffInput = {
@@ -507,6 +675,134 @@ export type BranchUpdateOneWithoutStaffNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutStaffInput, Prisma.BranchUpdateWithoutStaffInput>, Prisma.BranchUncheckedUpdateWithoutStaffInput>
 }
 
+export type BranchCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutAuditLogsInput, Prisma.BranchUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutAuditLogsInput, Prisma.BranchUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.BranchUpsertWithoutAuditLogsInput
+  disconnect?: Prisma.BranchWhereInput | boolean
+  delete?: Prisma.BranchWhereInput | boolean
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.BranchUpdateWithoutAuditLogsInput>, Prisma.BranchUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type BranchCreateNestedOneWithoutOrderSequenceInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutOrderSequenceInput, Prisma.BranchUncheckedCreateWithoutOrderSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutOrderSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutOrderSequenceNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutOrderSequenceInput, Prisma.BranchUncheckedCreateWithoutOrderSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutOrderSequenceInput
+  upsert?: Prisma.BranchUpsertWithoutOrderSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutOrderSequenceInput, Prisma.BranchUpdateWithoutOrderSequenceInput>, Prisma.BranchUncheckedUpdateWithoutOrderSequenceInput>
+}
+
+export type BranchCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutOrdersInput, Prisma.BranchUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutOrdersInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutOrdersInput, Prisma.BranchUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.BranchUpsertWithoutOrdersInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutOrdersInput, Prisma.BranchUpdateWithoutOrdersInput>, Prisma.BranchUncheckedUpdateWithoutOrdersInput>
+}
+
+export type BranchCreateNestedOneWithoutBillSequenceInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutBillSequenceInput, Prisma.BranchUncheckedCreateWithoutBillSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutBillSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutBillSequenceNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutBillSequenceInput, Prisma.BranchUncheckedCreateWithoutBillSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutBillSequenceInput
+  upsert?: Prisma.BranchUpsertWithoutBillSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutBillSequenceInput, Prisma.BranchUpdateWithoutBillSequenceInput>, Prisma.BranchUncheckedUpdateWithoutBillSequenceInput>
+}
+
+export type BranchCreateNestedOneWithoutBillsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutBillsInput, Prisma.BranchUncheckedCreateWithoutBillsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutBillsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutBillsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutBillsInput, Prisma.BranchUncheckedCreateWithoutBillsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutBillsInput
+  upsert?: Prisma.BranchUpsertWithoutBillsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutBillsInput, Prisma.BranchUpdateWithoutBillsInput>, Prisma.BranchUncheckedUpdateWithoutBillsInput>
+}
+
+export type BranchCreateNestedOneWithoutPrintersInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutPrintersInput, Prisma.BranchUncheckedCreateWithoutPrintersInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutPrintersInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutPrintersNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutPrintersInput, Prisma.BranchUncheckedCreateWithoutPrintersInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutPrintersInput
+  upsert?: Prisma.BranchUpsertWithoutPrintersInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutPrintersInput, Prisma.BranchUpdateWithoutPrintersInput>, Prisma.BranchUncheckedUpdateWithoutPrintersInput>
+}
+
+export type BranchCreateNestedOneWithoutPrintJobsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutPrintJobsInput, Prisma.BranchUncheckedCreateWithoutPrintJobsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutPrintJobsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutPrintJobsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutPrintJobsInput, Prisma.BranchUncheckedCreateWithoutPrintJobsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutPrintJobsInput
+  upsert?: Prisma.BranchUpsertWithoutPrintJobsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutPrintJobsInput, Prisma.BranchUpdateWithoutPrintJobsInput>, Prisma.BranchUncheckedUpdateWithoutPrintJobsInput>
+}
+
+export type BranchCreateNestedOneWithoutKotSequenceInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutKotSequenceInput, Prisma.BranchUncheckedCreateWithoutKotSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutKotSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutKotSequenceNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutKotSequenceInput, Prisma.BranchUncheckedCreateWithoutKotSequenceInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutKotSequenceInput
+  upsert?: Prisma.BranchUpsertWithoutKotSequenceInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutKotSequenceInput, Prisma.BranchUpdateWithoutKotSequenceInput>, Prisma.BranchUncheckedUpdateWithoutKotSequenceInput>
+}
+
+export type BranchCreateNestedOneWithoutKotsInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutKotsInput, Prisma.BranchUncheckedCreateWithoutKotsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutKotsInput
+  connect?: Prisma.BranchWhereUniqueInput
+}
+
+export type BranchUpdateOneRequiredWithoutKotsNestedInput = {
+  create?: Prisma.XOR<Prisma.BranchCreateWithoutKotsInput, Prisma.BranchUncheckedCreateWithoutKotsInput>
+  connectOrCreate?: Prisma.BranchCreateOrConnectWithoutKotsInput
+  upsert?: Prisma.BranchUpsertWithoutKotsInput
+  connect?: Prisma.BranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutKotsInput, Prisma.BranchUpdateWithoutKotsInput>, Prisma.BranchUncheckedUpdateWithoutKotsInput>
+}
+
 export type BranchCreateWithoutRestaurantInput = {
   id?: string
   name: string
@@ -516,8 +812,22 @@ export type BranchCreateWithoutRestaurantInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutRestaurantInput = {
@@ -529,8 +839,22 @@ export type BranchUncheckedCreateWithoutRestaurantInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutRestaurantInput = {
@@ -574,6 +898,378 @@ export type BranchScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
 }
 
+export type BranchCreateWithoutMenuCategoriesInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutMenuCategoriesInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutMenuCategoriesInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutMenuCategoriesInput, Prisma.BranchUncheckedCreateWithoutMenuCategoriesInput>
+}
+
+export type BranchUpsertWithoutMenuCategoriesInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutMenuCategoriesInput, Prisma.BranchUncheckedUpdateWithoutMenuCategoriesInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutMenuCategoriesInput, Prisma.BranchUncheckedCreateWithoutMenuCategoriesInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutMenuCategoriesInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutMenuCategoriesInput, Prisma.BranchUncheckedUpdateWithoutMenuCategoriesInput>
+}
+
+export type BranchUpdateWithoutMenuCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutMenuCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutMenuAddOnsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutMenuAddOnsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutMenuAddOnsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutMenuAddOnsInput, Prisma.BranchUncheckedCreateWithoutMenuAddOnsInput>
+}
+
+export type BranchUpsertWithoutMenuAddOnsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutMenuAddOnsInput, Prisma.BranchUncheckedUpdateWithoutMenuAddOnsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutMenuAddOnsInput, Prisma.BranchUncheckedCreateWithoutMenuAddOnsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutMenuAddOnsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutMenuAddOnsInput, Prisma.BranchUncheckedUpdateWithoutMenuAddOnsInput>
+}
+
+export type BranchUpdateWithoutMenuAddOnsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutMenuAddOnsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutFloorsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutFloorsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutFloorsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutFloorsInput, Prisma.BranchUncheckedCreateWithoutFloorsInput>
+}
+
+export type BranchUpsertWithoutFloorsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutFloorsInput, Prisma.BranchUncheckedUpdateWithoutFloorsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutFloorsInput, Prisma.BranchUncheckedCreateWithoutFloorsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutFloorsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutFloorsInput, Prisma.BranchUncheckedUpdateWithoutFloorsInput>
+}
+
+export type BranchUpdateWithoutFloorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutFloorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
 export type BranchCreateWithoutSectionsInput = {
   id?: string
   name: string
@@ -583,8 +1279,22 @@ export type BranchCreateWithoutSectionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutSectionsInput = {
@@ -597,7 +1307,21 @@ export type BranchUncheckedCreateWithoutSectionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
   staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutSectionsInput = {
@@ -625,8 +1349,22 @@ export type BranchUpdateWithoutSectionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutSectionsInput = {
@@ -639,6 +1377,268 @@ export type BranchUncheckedUpdateWithoutSectionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutReservationsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutReservationsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutReservationsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutReservationsInput, Prisma.BranchUncheckedCreateWithoutReservationsInput>
+}
+
+export type BranchUpsertWithoutReservationsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutReservationsInput, Prisma.BranchUncheckedUpdateWithoutReservationsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutReservationsInput, Prisma.BranchUncheckedCreateWithoutReservationsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutReservationsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutReservationsInput, Prisma.BranchUncheckedUpdateWithoutReservationsInput>
+}
+
+export type BranchUpdateWithoutReservationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutReservationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutTableOperationsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutTableOperationsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutTableOperationsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutTableOperationsInput, Prisma.BranchUncheckedCreateWithoutTableOperationsInput>
+}
+
+export type BranchUpsertWithoutTableOperationsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutTableOperationsInput, Prisma.BranchUncheckedUpdateWithoutTableOperationsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutTableOperationsInput, Prisma.BranchUncheckedCreateWithoutTableOperationsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutTableOperationsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutTableOperationsInput, Prisma.BranchUncheckedUpdateWithoutTableOperationsInput>
+}
+
+export type BranchUpdateWithoutTableOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutTableOperationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
 }
 
@@ -651,8 +1651,22 @@ export type BranchCreateWithoutStaffInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
   restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutStaffInput = {
@@ -665,7 +1679,21 @@ export type BranchUncheckedCreateWithoutStaffInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
   sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutStaffInput = {
@@ -693,8 +1721,22 @@ export type BranchUpdateWithoutStaffInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutStaffInput = {
@@ -707,7 +1749,1137 @@ export type BranchUncheckedUpdateWithoutStaffInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutAuditLogsInput, Prisma.BranchUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type BranchUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutAuditLogsInput, Prisma.BranchUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutAuditLogsInput, Prisma.BranchUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutAuditLogsInput, Prisma.BranchUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type BranchUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutOrderSequenceInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutOrderSequenceInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutOrderSequenceInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutOrderSequenceInput, Prisma.BranchUncheckedCreateWithoutOrderSequenceInput>
+}
+
+export type BranchUpsertWithoutOrderSequenceInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutOrderSequenceInput, Prisma.BranchUncheckedUpdateWithoutOrderSequenceInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutOrderSequenceInput, Prisma.BranchUncheckedCreateWithoutOrderSequenceInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutOrderSequenceInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutOrderSequenceInput, Prisma.BranchUncheckedUpdateWithoutOrderSequenceInput>
+}
+
+export type BranchUpdateWithoutOrderSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutOrderSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutOrdersInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutOrdersInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutOrdersInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutOrdersInput, Prisma.BranchUncheckedCreateWithoutOrdersInput>
+}
+
+export type BranchUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutOrdersInput, Prisma.BranchUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutOrdersInput, Prisma.BranchUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutOrdersInput, Prisma.BranchUncheckedUpdateWithoutOrdersInput>
+}
+
+export type BranchUpdateWithoutOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutOrdersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutBillSequenceInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutBillSequenceInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutBillSequenceInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutBillSequenceInput, Prisma.BranchUncheckedCreateWithoutBillSequenceInput>
+}
+
+export type BranchUpsertWithoutBillSequenceInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutBillSequenceInput, Prisma.BranchUncheckedUpdateWithoutBillSequenceInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutBillSequenceInput, Prisma.BranchUncheckedCreateWithoutBillSequenceInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutBillSequenceInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutBillSequenceInput, Prisma.BranchUncheckedUpdateWithoutBillSequenceInput>
+}
+
+export type BranchUpdateWithoutBillSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutBillSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutBillsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutBillsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutBillsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutBillsInput, Prisma.BranchUncheckedCreateWithoutBillsInput>
+}
+
+export type BranchUpsertWithoutBillsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutBillsInput, Prisma.BranchUncheckedUpdateWithoutBillsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutBillsInput, Prisma.BranchUncheckedCreateWithoutBillsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutBillsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutBillsInput, Prisma.BranchUncheckedUpdateWithoutBillsInput>
+}
+
+export type BranchUpdateWithoutBillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutBillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutPrintersInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutPrintersInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutPrintersInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutPrintersInput, Prisma.BranchUncheckedCreateWithoutPrintersInput>
+}
+
+export type BranchUpsertWithoutPrintersInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutPrintersInput, Prisma.BranchUncheckedUpdateWithoutPrintersInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutPrintersInput, Prisma.BranchUncheckedCreateWithoutPrintersInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutPrintersInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutPrintersInput, Prisma.BranchUncheckedUpdateWithoutPrintersInput>
+}
+
+export type BranchUpdateWithoutPrintersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutPrintersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutPrintJobsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutPrintJobsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutPrintJobsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutPrintJobsInput, Prisma.BranchUncheckedCreateWithoutPrintJobsInput>
+}
+
+export type BranchUpsertWithoutPrintJobsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutPrintJobsInput, Prisma.BranchUncheckedUpdateWithoutPrintJobsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutPrintJobsInput, Prisma.BranchUncheckedCreateWithoutPrintJobsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutPrintJobsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutPrintJobsInput, Prisma.BranchUncheckedUpdateWithoutPrintJobsInput>
+}
+
+export type BranchUpdateWithoutPrintJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutPrintJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutKotSequenceInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTCreateNestedManyWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutKotSequenceInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kots?: Prisma.KOTUncheckedCreateNestedManyWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutKotSequenceInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutKotSequenceInput, Prisma.BranchUncheckedCreateWithoutKotSequenceInput>
+}
+
+export type BranchUpsertWithoutKotSequenceInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutKotSequenceInput, Prisma.BranchUncheckedUpdateWithoutKotSequenceInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutKotSequenceInput, Prisma.BranchUncheckedCreateWithoutKotSequenceInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutKotSequenceInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutKotSequenceInput, Prisma.BranchUncheckedUpdateWithoutKotSequenceInput>
+}
+
+export type BranchUpdateWithoutKotSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutKotSequenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchCreateWithoutKotsInput = {
+  id?: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceCreateNestedOneWithoutBranchInput
+  restaurant: Prisma.RestaurantCreateNestedOneWithoutBranchesInput
+  floors?: Prisma.FloorCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationCreateNestedManyWithoutBranchInput
+}
+
+export type BranchUncheckedCreateWithoutKotsInput = {
+  id?: string
+  restaurantId: string
+  name: string
+  code: string
+  address?: string | null
+  phone?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  bills?: Prisma.BillUncheckedCreateNestedManyWithoutBranchInput
+  billSequence?: Prisma.BillSequenceUncheckedCreateNestedOneWithoutBranchInput
+  floors?: Prisma.FloorUncheckedCreateNestedManyWithoutBranchInput
+  kotSequence?: Prisma.KOTSequenceUncheckedCreateNestedOneWithoutBranchInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedCreateNestedManyWithoutBranchInput
+  menuCategories?: Prisma.MenuCategoryUncheckedCreateNestedManyWithoutBranchInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutBranchInput
+  orderSequence?: Prisma.OrderSequenceUncheckedCreateNestedOneWithoutBranchInput
+  printJobs?: Prisma.PrintJobUncheckedCreateNestedManyWithoutBranchInput
+  printers?: Prisma.PrinterUncheckedCreateNestedManyWithoutBranchInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutBranchInput
+  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutBranchInput
+  staff?: Prisma.StaffUncheckedCreateNestedManyWithoutBranchInput
+  tableOperations?: Prisma.TableOperationUncheckedCreateNestedManyWithoutBranchInput
+}
+
+export type BranchCreateOrConnectWithoutKotsInput = {
+  where: Prisma.BranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BranchCreateWithoutKotsInput, Prisma.BranchUncheckedCreateWithoutKotsInput>
+}
+
+export type BranchUpsertWithoutKotsInput = {
+  update: Prisma.XOR<Prisma.BranchUpdateWithoutKotsInput, Prisma.BranchUncheckedUpdateWithoutKotsInput>
+  create: Prisma.XOR<Prisma.BranchCreateWithoutKotsInput, Prisma.BranchUncheckedCreateWithoutKotsInput>
+  where?: Prisma.BranchWhereInput
+}
+
+export type BranchUpdateToOneWithWhereWithoutKotsInput = {
+  where?: Prisma.BranchWhereInput
+  data: Prisma.XOR<Prisma.BranchUpdateWithoutKotsInput, Prisma.BranchUncheckedUpdateWithoutKotsInput>
+}
+
+export type BranchUpdateWithoutKotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutBranchesNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
+}
+
+export type BranchUncheckedUpdateWithoutKotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  restaurantId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
+  sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
+  staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateManyRestaurantInput = {
@@ -730,8 +2902,22 @@ export type BranchUpdateWithoutRestaurantInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutRestaurantInput = {
@@ -743,8 +2929,22 @@ export type BranchUncheckedUpdateWithoutRestaurantInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  bills?: Prisma.BillUncheckedUpdateManyWithoutBranchNestedInput
+  billSequence?: Prisma.BillSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  floors?: Prisma.FloorUncheckedUpdateManyWithoutBranchNestedInput
+  kots?: Prisma.KOTUncheckedUpdateManyWithoutBranchNestedInput
+  kotSequence?: Prisma.KOTSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  menuAddOns?: Prisma.MenuAddOnUncheckedUpdateManyWithoutBranchNestedInput
+  menuCategories?: Prisma.MenuCategoryUncheckedUpdateManyWithoutBranchNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutBranchNestedInput
+  orderSequence?: Prisma.OrderSequenceUncheckedUpdateOneWithoutBranchNestedInput
+  printJobs?: Prisma.PrintJobUncheckedUpdateManyWithoutBranchNestedInput
+  printers?: Prisma.PrinterUncheckedUpdateManyWithoutBranchNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutBranchNestedInput
   sections?: Prisma.SectionUncheckedUpdateManyWithoutBranchNestedInput
   staff?: Prisma.StaffUncheckedUpdateManyWithoutBranchNestedInput
+  tableOperations?: Prisma.TableOperationUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateManyWithoutRestaurantInput = {
@@ -764,13 +2964,35 @@ export type BranchUncheckedUpdateManyWithoutRestaurantInput = {
  */
 
 export type BranchCountOutputType = {
+  auditLogs: number
+  bills: number
+  floors: number
+  kots: number
+  menuAddOns: number
+  menuCategories: number
+  orders: number
+  printJobs: number
+  printers: number
+  reservations: number
   sections: number
   staff: number
+  tableOperations: number
 }
 
 export type BranchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | BranchCountOutputTypeCountAuditLogsArgs
+  bills?: boolean | BranchCountOutputTypeCountBillsArgs
+  floors?: boolean | BranchCountOutputTypeCountFloorsArgs
+  kots?: boolean | BranchCountOutputTypeCountKotsArgs
+  menuAddOns?: boolean | BranchCountOutputTypeCountMenuAddOnsArgs
+  menuCategories?: boolean | BranchCountOutputTypeCountMenuCategoriesArgs
+  orders?: boolean | BranchCountOutputTypeCountOrdersArgs
+  printJobs?: boolean | BranchCountOutputTypeCountPrintJobsArgs
+  printers?: boolean | BranchCountOutputTypeCountPrintersArgs
+  reservations?: boolean | BranchCountOutputTypeCountReservationsArgs
   sections?: boolean | BranchCountOutputTypeCountSectionsArgs
   staff?: boolean | BranchCountOutputTypeCountStaffArgs
+  tableOperations?: boolean | BranchCountOutputTypeCountTableOperationsArgs
 }
 
 /**
@@ -781,6 +3003,76 @@ export type BranchCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
    * Select specific fields to fetch from the BranchCountOutputType
    */
   select?: Prisma.BranchCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountBillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BillWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountFloorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FloorWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountKotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KOTWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountMenuAddOnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MenuAddOnWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountMenuCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MenuCategoryWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountPrintJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrintJobWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountPrintersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrinterWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReservationWhereInput
 }
 
 /**
@@ -797,6 +3089,13 @@ export type BranchCountOutputTypeCountStaffArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.StaffWhereInput
 }
 
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountTableOperationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TableOperationWhereInput
+}
+
 
 export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -808,9 +3107,23 @@ export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
+  bills?: boolean | Prisma.Branch$billsArgs<ExtArgs>
+  billSequence?: boolean | Prisma.Branch$billSequenceArgs<ExtArgs>
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
+  floors?: boolean | Prisma.Branch$floorsArgs<ExtArgs>
+  kots?: boolean | Prisma.Branch$kotsArgs<ExtArgs>
+  kotSequence?: boolean | Prisma.Branch$kotSequenceArgs<ExtArgs>
+  menuAddOns?: boolean | Prisma.Branch$menuAddOnsArgs<ExtArgs>
+  menuCategories?: boolean | Prisma.Branch$menuCategoriesArgs<ExtArgs>
+  orders?: boolean | Prisma.Branch$ordersArgs<ExtArgs>
+  orderSequence?: boolean | Prisma.Branch$orderSequenceArgs<ExtArgs>
+  printJobs?: boolean | Prisma.Branch$printJobsArgs<ExtArgs>
+  printers?: boolean | Prisma.Branch$printersArgs<ExtArgs>
+  reservations?: boolean | Prisma.Branch$reservationsArgs<ExtArgs>
   sections?: boolean | Prisma.Branch$sectionsArgs<ExtArgs>
   staff?: boolean | Prisma.Branch$staffArgs<ExtArgs>
+  tableOperations?: boolean | Prisma.Branch$tableOperationsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branch"]>
 
@@ -854,9 +3167,23 @@ export type BranchSelectScalar = {
 
 export type BranchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "restaurantId" | "name" | "code" | "address" | "phone" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["branch"]>
 export type BranchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
+  bills?: boolean | Prisma.Branch$billsArgs<ExtArgs>
+  billSequence?: boolean | Prisma.Branch$billSequenceArgs<ExtArgs>
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
+  floors?: boolean | Prisma.Branch$floorsArgs<ExtArgs>
+  kots?: boolean | Prisma.Branch$kotsArgs<ExtArgs>
+  kotSequence?: boolean | Prisma.Branch$kotSequenceArgs<ExtArgs>
+  menuAddOns?: boolean | Prisma.Branch$menuAddOnsArgs<ExtArgs>
+  menuCategories?: boolean | Prisma.Branch$menuCategoriesArgs<ExtArgs>
+  orders?: boolean | Prisma.Branch$ordersArgs<ExtArgs>
+  orderSequence?: boolean | Prisma.Branch$orderSequenceArgs<ExtArgs>
+  printJobs?: boolean | Prisma.Branch$printJobsArgs<ExtArgs>
+  printers?: boolean | Prisma.Branch$printersArgs<ExtArgs>
+  reservations?: boolean | Prisma.Branch$reservationsArgs<ExtArgs>
   sections?: boolean | Prisma.Branch$sectionsArgs<ExtArgs>
   staff?: boolean | Prisma.Branch$staffArgs<ExtArgs>
+  tableOperations?: boolean | Prisma.Branch$tableOperationsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BranchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -869,9 +3196,23 @@ export type BranchIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $BranchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Branch"
   objects: {
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    bills: Prisma.$BillPayload<ExtArgs>[]
+    billSequence: Prisma.$BillSequencePayload<ExtArgs> | null
     restaurant: Prisma.$RestaurantPayload<ExtArgs>
+    floors: Prisma.$FloorPayload<ExtArgs>[]
+    kots: Prisma.$KOTPayload<ExtArgs>[]
+    kotSequence: Prisma.$KOTSequencePayload<ExtArgs> | null
+    menuAddOns: Prisma.$MenuAddOnPayload<ExtArgs>[]
+    menuCategories: Prisma.$MenuCategoryPayload<ExtArgs>[]
+    orders: Prisma.$OrderPayload<ExtArgs>[]
+    orderSequence: Prisma.$OrderSequencePayload<ExtArgs> | null
+    printJobs: Prisma.$PrintJobPayload<ExtArgs>[]
+    printers: Prisma.$PrinterPayload<ExtArgs>[]
+    reservations: Prisma.$ReservationPayload<ExtArgs>[]
     sections: Prisma.$SectionPayload<ExtArgs>[]
     staff: Prisma.$StaffPayload<ExtArgs>[]
+    tableOperations: Prisma.$TableOperationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1277,9 +3618,23 @@ readonly fields: BranchFieldRefs;
  */
 export interface Prisma__BranchClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  auditLogs<T extends Prisma.Branch$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bills<T extends Prisma.Branch$billsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$billsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billSequence<T extends Prisma.Branch$billSequenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$billSequenceArgs<ExtArgs>>): Prisma.Prisma__BillSequenceClient<runtime.Types.Result.GetResult<Prisma.$BillSequencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   restaurant<T extends Prisma.RestaurantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RestaurantDefaultArgs<ExtArgs>>): Prisma.Prisma__RestaurantClient<runtime.Types.Result.GetResult<Prisma.$RestaurantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  floors<T extends Prisma.Branch$floorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$floorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  kots<T extends Prisma.Branch$kotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$kotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KOTPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  kotSequence<T extends Prisma.Branch$kotSequenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$kotSequenceArgs<ExtArgs>>): Prisma.Prisma__KOTSequenceClient<runtime.Types.Result.GetResult<Prisma.$KOTSequencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  menuAddOns<T extends Prisma.Branch$menuAddOnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$menuAddOnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MenuAddOnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  menuCategories<T extends Prisma.Branch$menuCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$menuCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MenuCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  orders<T extends Prisma.Branch$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  orderSequence<T extends Prisma.Branch$orderSequenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$orderSequenceArgs<ExtArgs>>): Prisma.Prisma__OrderSequenceClient<runtime.Types.Result.GetResult<Prisma.$OrderSequencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  printJobs<T extends Prisma.Branch$printJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$printJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrintJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  printers<T extends Prisma.Branch$printersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$printersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrinterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reservations<T extends Prisma.Branch$reservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sections<T extends Prisma.Branch$sectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   staff<T extends Prisma.Branch$staffArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$staffArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tableOperations<T extends Prisma.Branch$tableOperationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$tableOperationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TableOperationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1719,6 +4074,303 @@ export type BranchDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
+ * Branch.auditLogs
+ */
+export type Branch$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Branch.bills
+ */
+export type Branch$billsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bill
+   */
+  select?: Prisma.BillSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bill
+   */
+  omit?: Prisma.BillOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillInclude<ExtArgs> | null
+  where?: Prisma.BillWhereInput
+  orderBy?: Prisma.BillOrderByWithRelationInput | Prisma.BillOrderByWithRelationInput[]
+  cursor?: Prisma.BillWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BillScalarFieldEnum | Prisma.BillScalarFieldEnum[]
+}
+
+/**
+ * Branch.billSequence
+ */
+export type Branch$billSequenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillSequence
+   */
+  select?: Prisma.BillSequenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillSequence
+   */
+  omit?: Prisma.BillSequenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillSequenceInclude<ExtArgs> | null
+  where?: Prisma.BillSequenceWhereInput
+}
+
+/**
+ * Branch.floors
+ */
+export type Branch$floorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Floor
+   */
+  select?: Prisma.FloorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Floor
+   */
+  omit?: Prisma.FloorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FloorInclude<ExtArgs> | null
+  where?: Prisma.FloorWhereInput
+  orderBy?: Prisma.FloorOrderByWithRelationInput | Prisma.FloorOrderByWithRelationInput[]
+  cursor?: Prisma.FloorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FloorScalarFieldEnum | Prisma.FloorScalarFieldEnum[]
+}
+
+/**
+ * Branch.kots
+ */
+export type Branch$kotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KOT
+   */
+  select?: Prisma.KOTSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KOT
+   */
+  omit?: Prisma.KOTOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KOTInclude<ExtArgs> | null
+  where?: Prisma.KOTWhereInput
+  orderBy?: Prisma.KOTOrderByWithRelationInput | Prisma.KOTOrderByWithRelationInput[]
+  cursor?: Prisma.KOTWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KOTScalarFieldEnum | Prisma.KOTScalarFieldEnum[]
+}
+
+/**
+ * Branch.kotSequence
+ */
+export type Branch$kotSequenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KOTSequence
+   */
+  select?: Prisma.KOTSequenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KOTSequence
+   */
+  omit?: Prisma.KOTSequenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KOTSequenceInclude<ExtArgs> | null
+  where?: Prisma.KOTSequenceWhereInput
+}
+
+/**
+ * Branch.menuAddOns
+ */
+export type Branch$menuAddOnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MenuAddOn
+   */
+  select?: Prisma.MenuAddOnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MenuAddOn
+   */
+  omit?: Prisma.MenuAddOnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MenuAddOnInclude<ExtArgs> | null
+  where?: Prisma.MenuAddOnWhereInput
+  orderBy?: Prisma.MenuAddOnOrderByWithRelationInput | Prisma.MenuAddOnOrderByWithRelationInput[]
+  cursor?: Prisma.MenuAddOnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MenuAddOnScalarFieldEnum | Prisma.MenuAddOnScalarFieldEnum[]
+}
+
+/**
+ * Branch.menuCategories
+ */
+export type Branch$menuCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MenuCategory
+   */
+  select?: Prisma.MenuCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MenuCategory
+   */
+  omit?: Prisma.MenuCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MenuCategoryInclude<ExtArgs> | null
+  where?: Prisma.MenuCategoryWhereInput
+  orderBy?: Prisma.MenuCategoryOrderByWithRelationInput | Prisma.MenuCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.MenuCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MenuCategoryScalarFieldEnum | Prisma.MenuCategoryScalarFieldEnum[]
+}
+
+/**
+ * Branch.orders
+ */
+export type Branch$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Order
+   */
+  select?: Prisma.OrderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Order
+   */
+  omit?: Prisma.OrderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * Branch.orderSequence
+ */
+export type Branch$orderSequenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OrderSequence
+   */
+  select?: Prisma.OrderSequenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OrderSequence
+   */
+  omit?: Prisma.OrderSequenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrderSequenceInclude<ExtArgs> | null
+  where?: Prisma.OrderSequenceWhereInput
+}
+
+/**
+ * Branch.printJobs
+ */
+export type Branch$printJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PrintJob
+   */
+  select?: Prisma.PrintJobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PrintJob
+   */
+  omit?: Prisma.PrintJobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrintJobInclude<ExtArgs> | null
+  where?: Prisma.PrintJobWhereInput
+  orderBy?: Prisma.PrintJobOrderByWithRelationInput | Prisma.PrintJobOrderByWithRelationInput[]
+  cursor?: Prisma.PrintJobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrintJobScalarFieldEnum | Prisma.PrintJobScalarFieldEnum[]
+}
+
+/**
+ * Branch.printers
+ */
+export type Branch$printersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Printer
+   */
+  select?: Prisma.PrinterSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Printer
+   */
+  omit?: Prisma.PrinterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrinterInclude<ExtArgs> | null
+  where?: Prisma.PrinterWhereInput
+  orderBy?: Prisma.PrinterOrderByWithRelationInput | Prisma.PrinterOrderByWithRelationInput[]
+  cursor?: Prisma.PrinterWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrinterScalarFieldEnum | Prisma.PrinterScalarFieldEnum[]
+}
+
+/**
+ * Branch.reservations
+ */
+export type Branch$reservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Reservation
+   */
+  select?: Prisma.ReservationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Reservation
+   */
+  omit?: Prisma.ReservationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReservationInclude<ExtArgs> | null
+  where?: Prisma.ReservationWhereInput
+  orderBy?: Prisma.ReservationOrderByWithRelationInput | Prisma.ReservationOrderByWithRelationInput[]
+  cursor?: Prisma.ReservationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReservationScalarFieldEnum | Prisma.ReservationScalarFieldEnum[]
+}
+
+/**
  * Branch.sections
  */
 export type Branch$sectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1764,6 +4416,30 @@ export type Branch$staffArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.StaffScalarFieldEnum | Prisma.StaffScalarFieldEnum[]
+}
+
+/**
+ * Branch.tableOperations
+ */
+export type Branch$tableOperationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TableOperation
+   */
+  select?: Prisma.TableOperationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TableOperation
+   */
+  omit?: Prisma.TableOperationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TableOperationInclude<ExtArgs> | null
+  where?: Prisma.TableOperationWhereInput
+  orderBy?: Prisma.TableOperationOrderByWithRelationInput | Prisma.TableOperationOrderByWithRelationInput[]
+  cursor?: Prisma.TableOperationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TableOperationScalarFieldEnum | Prisma.TableOperationScalarFieldEnum[]
 }
 
 /**

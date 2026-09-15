@@ -43,6 +43,7 @@ export type SectionMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  floorId: string | null
 }
 
 export type SectionMaxAggregateOutputType = {
@@ -54,6 +55,7 @@ export type SectionMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  floorId: string | null
 }
 
 export type SectionCountAggregateOutputType = {
@@ -65,6 +67,7 @@ export type SectionCountAggregateOutputType = {
   isActive: number
   createdAt: number
   updatedAt: number
+  floorId: number
   _all: number
 }
 
@@ -86,6 +89,7 @@ export type SectionMinAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  floorId?: true
 }
 
 export type SectionMaxAggregateInputType = {
@@ -97,6 +101,7 @@ export type SectionMaxAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  floorId?: true
 }
 
 export type SectionCountAggregateInputType = {
@@ -108,6 +113,7 @@ export type SectionCountAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  floorId?: true
   _all?: true
 }
 
@@ -206,6 +212,7 @@ export type SectionGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
+  floorId: string
   _count: SectionCountAggregateOutputType | null
   _avg: SectionAvgAggregateOutputType | null
   _sum: SectionSumAggregateOutputType | null
@@ -240,8 +247,11 @@ export type SectionWhereInput = {
   isActive?: Prisma.BoolFilter<"Section"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Section"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Section"> | Date | string
+  floorId?: Prisma.StringFilter<"Section"> | string
   tables?: Prisma.DiningTableListRelationFilter
+  reservations?: Prisma.ReservationListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
 }
 
 export type SectionOrderByWithRelationInput = {
@@ -253,8 +263,11 @@ export type SectionOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  floorId?: Prisma.SortOrder
   tables?: Prisma.DiningTableOrderByRelationAggregateInput
+  reservations?: Prisma.ReservationOrderByRelationAggregateInput
   branch?: Prisma.BranchOrderByWithRelationInput
+  floor?: Prisma.FloorOrderByWithRelationInput
 }
 
 export type SectionWhereUniqueInput = Prisma.AtLeast<{
@@ -269,8 +282,11 @@ export type SectionWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Section"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Section"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Section"> | Date | string
+  floorId?: Prisma.StringFilter<"Section"> | string
   tables?: Prisma.DiningTableListRelationFilter
+  reservations?: Prisma.ReservationListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
 }, "id">
 
 export type SectionOrderByWithAggregationInput = {
@@ -282,6 +298,7 @@ export type SectionOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  floorId?: Prisma.SortOrder
   _count?: Prisma.SectionCountOrderByAggregateInput
   _avg?: Prisma.SectionAvgOrderByAggregateInput
   _max?: Prisma.SectionMaxOrderByAggregateInput
@@ -301,6 +318,7 @@ export type SectionScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Section"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Section"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Section"> | Date | string
+  floorId?: Prisma.StringWithAggregatesFilter<"Section"> | string
 }
 
 export type SectionCreateInput = {
@@ -312,7 +330,9 @@ export type SectionCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   tables?: Prisma.DiningTableCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutSectionInput
   branch: Prisma.BranchCreateNestedOneWithoutSectionsInput
+  floor: Prisma.FloorCreateNestedOneWithoutSectionsInput
 }
 
 export type SectionUncheckedCreateInput = {
@@ -324,7 +344,9 @@ export type SectionUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  floorId: string
   tables?: Prisma.DiningTableUncheckedCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSectionInput
 }
 
 export type SectionUpdateInput = {
@@ -336,7 +358,9 @@ export type SectionUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tables?: Prisma.DiningTableUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutSectionNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutSectionsNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutSectionsNestedInput
 }
 
 export type SectionUncheckedUpdateInput = {
@@ -348,7 +372,9 @@ export type SectionUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
   tables?: Prisma.DiningTableUncheckedUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSectionNestedInput
 }
 
 export type SectionCreateManyInput = {
@@ -360,6 +386,7 @@ export type SectionCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  floorId: string
 }
 
 export type SectionUpdateManyMutationInput = {
@@ -381,6 +408,7 @@ export type SectionUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SectionListRelationFilter = {
@@ -402,6 +430,7 @@ export type SectionCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  floorId?: Prisma.SortOrder
 }
 
 export type SectionAvgOrderByAggregateInput = {
@@ -417,6 +446,7 @@ export type SectionMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  floorId?: Prisma.SortOrder
 }
 
 export type SectionMinOrderByAggregateInput = {
@@ -428,15 +458,16 @@ export type SectionMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  floorId?: Prisma.SortOrder
 }
 
 export type SectionSumOrderByAggregateInput = {
   displayOrder?: Prisma.SortOrder
 }
 
-export type SectionScalarRelationFilter = {
-  is?: Prisma.SectionWhereInput
-  isNot?: Prisma.SectionWhereInput
+export type SectionNullableScalarRelationFilter = {
+  is?: Prisma.SectionWhereInput | null
+  isNot?: Prisma.SectionWhereInput | null
 }
 
 export type SectionCreateNestedManyWithoutBranchInput = {
@@ -481,12 +512,46 @@ export type SectionUncheckedUpdateManyWithoutBranchNestedInput = {
   deleteMany?: Prisma.SectionScalarWhereInput | Prisma.SectionScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type SectionCreateNestedManyWithoutFloorInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput> | Prisma.SectionCreateWithoutFloorInput[] | Prisma.SectionUncheckedCreateWithoutFloorInput[]
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutFloorInput | Prisma.SectionCreateOrConnectWithoutFloorInput[]
+  createMany?: Prisma.SectionCreateManyFloorInputEnvelope
+  connect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+}
+
+export type SectionUncheckedCreateNestedManyWithoutFloorInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput> | Prisma.SectionCreateWithoutFloorInput[] | Prisma.SectionUncheckedCreateWithoutFloorInput[]
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutFloorInput | Prisma.SectionCreateOrConnectWithoutFloorInput[]
+  createMany?: Prisma.SectionCreateManyFloorInputEnvelope
+  connect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+}
+
+export type SectionUpdateManyWithoutFloorNestedInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput> | Prisma.SectionCreateWithoutFloorInput[] | Prisma.SectionUncheckedCreateWithoutFloorInput[]
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutFloorInput | Prisma.SectionCreateOrConnectWithoutFloorInput[]
+  upsert?: Prisma.SectionUpsertWithWhereUniqueWithoutFloorInput | Prisma.SectionUpsertWithWhereUniqueWithoutFloorInput[]
+  createMany?: Prisma.SectionCreateManyFloorInputEnvelope
+  set?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  disconnect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  delete?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  connect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  update?: Prisma.SectionUpdateWithWhereUniqueWithoutFloorInput | Prisma.SectionUpdateWithWhereUniqueWithoutFloorInput[]
+  updateMany?: Prisma.SectionUpdateManyWithWhereWithoutFloorInput | Prisma.SectionUpdateManyWithWhereWithoutFloorInput[]
+  deleteMany?: Prisma.SectionScalarWhereInput | Prisma.SectionScalarWhereInput[]
+}
+
+export type SectionUncheckedUpdateManyWithoutFloorNestedInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput> | Prisma.SectionCreateWithoutFloorInput[] | Prisma.SectionUncheckedCreateWithoutFloorInput[]
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutFloorInput | Prisma.SectionCreateOrConnectWithoutFloorInput[]
+  upsert?: Prisma.SectionUpsertWithWhereUniqueWithoutFloorInput | Prisma.SectionUpsertWithWhereUniqueWithoutFloorInput[]
+  createMany?: Prisma.SectionCreateManyFloorInputEnvelope
+  set?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  disconnect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  delete?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  connect?: Prisma.SectionWhereUniqueInput | Prisma.SectionWhereUniqueInput[]
+  update?: Prisma.SectionUpdateWithWhereUniqueWithoutFloorInput | Prisma.SectionUpdateWithWhereUniqueWithoutFloorInput[]
+  updateMany?: Prisma.SectionUpdateManyWithWhereWithoutFloorInput | Prisma.SectionUpdateManyWithWhereWithoutFloorInput[]
+  deleteMany?: Prisma.SectionScalarWhereInput | Prisma.SectionScalarWhereInput[]
 }
 
 export type SectionCreateNestedOneWithoutTablesInput = {
@@ -495,12 +560,30 @@ export type SectionCreateNestedOneWithoutTablesInput = {
   connect?: Prisma.SectionWhereUniqueInput
 }
 
-export type SectionUpdateOneRequiredWithoutTablesNestedInput = {
+export type SectionUpdateOneWithoutTablesNestedInput = {
   create?: Prisma.XOR<Prisma.SectionCreateWithoutTablesInput, Prisma.SectionUncheckedCreateWithoutTablesInput>
   connectOrCreate?: Prisma.SectionCreateOrConnectWithoutTablesInput
   upsert?: Prisma.SectionUpsertWithoutTablesInput
+  disconnect?: Prisma.SectionWhereInput | boolean
+  delete?: Prisma.SectionWhereInput | boolean
   connect?: Prisma.SectionWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.SectionUpdateToOneWithWhereWithoutTablesInput, Prisma.SectionUpdateWithoutTablesInput>, Prisma.SectionUncheckedUpdateWithoutTablesInput>
+}
+
+export type SectionCreateNestedOneWithoutReservationsInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutReservationsInput, Prisma.SectionUncheckedCreateWithoutReservationsInput>
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutReservationsInput
+  connect?: Prisma.SectionWhereUniqueInput
+}
+
+export type SectionUpdateOneWithoutReservationsNestedInput = {
+  create?: Prisma.XOR<Prisma.SectionCreateWithoutReservationsInput, Prisma.SectionUncheckedCreateWithoutReservationsInput>
+  connectOrCreate?: Prisma.SectionCreateOrConnectWithoutReservationsInput
+  upsert?: Prisma.SectionUpsertWithoutReservationsInput
+  disconnect?: Prisma.SectionWhereInput | boolean
+  delete?: Prisma.SectionWhereInput | boolean
+  connect?: Prisma.SectionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SectionUpdateToOneWithWhereWithoutReservationsInput, Prisma.SectionUpdateWithoutReservationsInput>, Prisma.SectionUncheckedUpdateWithoutReservationsInput>
 }
 
 export type SectionCreateWithoutBranchInput = {
@@ -512,6 +595,8 @@ export type SectionCreateWithoutBranchInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   tables?: Prisma.DiningTableCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutSectionInput
+  floor: Prisma.FloorCreateNestedOneWithoutSectionsInput
 }
 
 export type SectionUncheckedCreateWithoutBranchInput = {
@@ -522,7 +607,9 @@ export type SectionUncheckedCreateWithoutBranchInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  floorId: string
   tables?: Prisma.DiningTableUncheckedCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSectionInput
 }
 
 export type SectionCreateOrConnectWithoutBranchInput = {
@@ -563,6 +650,59 @@ export type SectionScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Section"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Section"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Section"> | Date | string
+  floorId?: Prisma.StringFilter<"Section"> | string
+}
+
+export type SectionCreateWithoutFloorInput = {
+  id?: string
+  name: string
+  description?: string | null
+  displayOrder?: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  tables?: Prisma.DiningTableCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationCreateNestedManyWithoutSectionInput
+  branch: Prisma.BranchCreateNestedOneWithoutSectionsInput
+}
+
+export type SectionUncheckedCreateWithoutFloorInput = {
+  id?: string
+  branchId: string
+  name: string
+  description?: string | null
+  displayOrder?: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  tables?: Prisma.DiningTableUncheckedCreateNestedManyWithoutSectionInput
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSectionInput
+}
+
+export type SectionCreateOrConnectWithoutFloorInput = {
+  where: Prisma.SectionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput>
+}
+
+export type SectionCreateManyFloorInputEnvelope = {
+  data: Prisma.SectionCreateManyFloorInput | Prisma.SectionCreateManyFloorInput[]
+  skipDuplicates?: boolean
+}
+
+export type SectionUpsertWithWhereUniqueWithoutFloorInput = {
+  where: Prisma.SectionWhereUniqueInput
+  update: Prisma.XOR<Prisma.SectionUpdateWithoutFloorInput, Prisma.SectionUncheckedUpdateWithoutFloorInput>
+  create: Prisma.XOR<Prisma.SectionCreateWithoutFloorInput, Prisma.SectionUncheckedCreateWithoutFloorInput>
+}
+
+export type SectionUpdateWithWhereUniqueWithoutFloorInput = {
+  where: Prisma.SectionWhereUniqueInput
+  data: Prisma.XOR<Prisma.SectionUpdateWithoutFloorInput, Prisma.SectionUncheckedUpdateWithoutFloorInput>
+}
+
+export type SectionUpdateManyWithWhereWithoutFloorInput = {
+  where: Prisma.SectionScalarWhereInput
+  data: Prisma.XOR<Prisma.SectionUpdateManyMutationInput, Prisma.SectionUncheckedUpdateManyWithoutFloorInput>
 }
 
 export type SectionCreateWithoutTablesInput = {
@@ -573,7 +713,9 @@ export type SectionCreateWithoutTablesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  reservations?: Prisma.ReservationCreateNestedManyWithoutSectionInput
   branch: Prisma.BranchCreateNestedOneWithoutSectionsInput
+  floor: Prisma.FloorCreateNestedOneWithoutSectionsInput
 }
 
 export type SectionUncheckedCreateWithoutTablesInput = {
@@ -585,6 +727,8 @@ export type SectionUncheckedCreateWithoutTablesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  floorId: string
+  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSectionInput
 }
 
 export type SectionCreateOrConnectWithoutTablesInput = {
@@ -611,7 +755,9 @@ export type SectionUpdateWithoutTablesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reservations?: Prisma.ReservationUpdateManyWithoutSectionNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutSectionsNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutSectionsNestedInput
 }
 
 export type SectionUncheckedUpdateWithoutTablesInput = {
@@ -623,6 +769,76 @@ export type SectionUncheckedUpdateWithoutTablesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSectionNestedInput
+}
+
+export type SectionCreateWithoutReservationsInput = {
+  id?: string
+  name: string
+  description?: string | null
+  displayOrder?: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  tables?: Prisma.DiningTableCreateNestedManyWithoutSectionInput
+  branch: Prisma.BranchCreateNestedOneWithoutSectionsInput
+  floor: Prisma.FloorCreateNestedOneWithoutSectionsInput
+}
+
+export type SectionUncheckedCreateWithoutReservationsInput = {
+  id?: string
+  branchId: string
+  name: string
+  description?: string | null
+  displayOrder?: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  floorId: string
+  tables?: Prisma.DiningTableUncheckedCreateNestedManyWithoutSectionInput
+}
+
+export type SectionCreateOrConnectWithoutReservationsInput = {
+  where: Prisma.SectionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SectionCreateWithoutReservationsInput, Prisma.SectionUncheckedCreateWithoutReservationsInput>
+}
+
+export type SectionUpsertWithoutReservationsInput = {
+  update: Prisma.XOR<Prisma.SectionUpdateWithoutReservationsInput, Prisma.SectionUncheckedUpdateWithoutReservationsInput>
+  create: Prisma.XOR<Prisma.SectionCreateWithoutReservationsInput, Prisma.SectionUncheckedCreateWithoutReservationsInput>
+  where?: Prisma.SectionWhereInput
+}
+
+export type SectionUpdateToOneWithWhereWithoutReservationsInput = {
+  where?: Prisma.SectionWhereInput
+  data: Prisma.XOR<Prisma.SectionUpdateWithoutReservationsInput, Prisma.SectionUncheckedUpdateWithoutReservationsInput>
+}
+
+export type SectionUpdateWithoutReservationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tables?: Prisma.DiningTableUpdateManyWithoutSectionNestedInput
+  branch?: Prisma.BranchUpdateOneRequiredWithoutSectionsNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutSectionsNestedInput
+}
+
+export type SectionUncheckedUpdateWithoutReservationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  tables?: Prisma.DiningTableUncheckedUpdateManyWithoutSectionNestedInput
 }
 
 export type SectionCreateManyBranchInput = {
@@ -633,6 +849,7 @@ export type SectionCreateManyBranchInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  floorId: string
 }
 
 export type SectionUpdateWithoutBranchInput = {
@@ -644,6 +861,8 @@ export type SectionUpdateWithoutBranchInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tables?: Prisma.DiningTableUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutSectionNestedInput
+  floor?: Prisma.FloorUpdateOneRequiredWithoutSectionsNestedInput
 }
 
 export type SectionUncheckedUpdateWithoutBranchInput = {
@@ -654,11 +873,62 @@ export type SectionUncheckedUpdateWithoutBranchInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
   tables?: Prisma.DiningTableUncheckedUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSectionNestedInput
 }
 
 export type SectionUncheckedUpdateManyWithoutBranchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type SectionCreateManyFloorInput = {
+  id?: string
+  branchId: string
+  name: string
+  description?: string | null
+  displayOrder?: number
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type SectionUpdateWithoutFloorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tables?: Prisma.DiningTableUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUpdateManyWithoutSectionNestedInput
+  branch?: Prisma.BranchUpdateOneRequiredWithoutSectionsNestedInput
+}
+
+export type SectionUncheckedUpdateWithoutFloorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tables?: Prisma.DiningTableUncheckedUpdateManyWithoutSectionNestedInput
+  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSectionNestedInput
+}
+
+export type SectionUncheckedUpdateManyWithoutFloorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -674,10 +944,12 @@ export type SectionUncheckedUpdateManyWithoutBranchInput = {
 
 export type SectionCountOutputType = {
   tables: number
+  reservations: number
 }
 
 export type SectionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tables?: boolean | SectionCountOutputTypeCountTablesArgs
+  reservations?: boolean | SectionCountOutputTypeCountReservationsArgs
 }
 
 /**
@@ -697,6 +969,13 @@ export type SectionCountOutputTypeCountTablesArgs<ExtArgs extends runtime.Types.
   where?: Prisma.DiningTableWhereInput
 }
 
+/**
+ * SectionCountOutputType without action
+ */
+export type SectionCountOutputTypeCountReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReservationWhereInput
+}
+
 
 export type SectionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -707,8 +986,11 @@ export type SectionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  floorId?: boolean
   tables?: boolean | Prisma.Section$tablesArgs<ExtArgs>
+  reservations?: boolean | Prisma.Section$reservationsArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SectionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["section"]>
 
@@ -721,7 +1003,9 @@ export type SectionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  floorId?: boolean
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["section"]>
 
 export type SectionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -733,7 +1017,9 @@ export type SectionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  floorId?: boolean
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["section"]>
 
 export type SectionSelectScalar = {
@@ -745,26 +1031,33 @@ export type SectionSelectScalar = {
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  floorId?: boolean
 }
 
-export type SectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "branchId" | "name" | "description" | "displayOrder" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["section"]>
+export type SectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "branchId" | "name" | "description" | "displayOrder" | "isActive" | "createdAt" | "updatedAt" | "floorId", ExtArgs["result"]["section"]>
 export type SectionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tables?: boolean | Prisma.Section$tablesArgs<ExtArgs>
+  reservations?: boolean | Prisma.Section$reservationsArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.SectionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SectionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }
 export type SectionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
 }
 
 export type $SectionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Section"
   objects: {
     tables: Prisma.$DiningTablePayload<ExtArgs>[]
+    reservations: Prisma.$ReservationPayload<ExtArgs>[]
     branch: Prisma.$BranchPayload<ExtArgs>
+    floor: Prisma.$FloorPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -775,6 +1068,7 @@ export type $SectionPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    floorId: string
   }, ExtArgs["result"]["section"]>
   composites: {}
 }
@@ -1170,7 +1464,9 @@ readonly fields: SectionFieldRefs;
 export interface Prisma__SectionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   tables<T extends Prisma.Section$tablesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Section$tablesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DiningTablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reservations<T extends Prisma.Section$reservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Section$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  floor<T extends Prisma.FloorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FloorDefaultArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1208,6 +1504,7 @@ export interface SectionFieldRefs {
   readonly isActive: Prisma.FieldRef<"Section", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Section", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Section", 'DateTime'>
+  readonly floorId: Prisma.FieldRef<"Section", 'String'>
 }
     
 
@@ -1630,6 +1927,30 @@ export type Section$tablesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.DiningTableScalarFieldEnum | Prisma.DiningTableScalarFieldEnum[]
+}
+
+/**
+ * Section.reservations
+ */
+export type Section$reservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Reservation
+   */
+  select?: Prisma.ReservationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Reservation
+   */
+  omit?: Prisma.ReservationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReservationInclude<ExtArgs> | null
+  where?: Prisma.ReservationWhereInput
+  orderBy?: Prisma.ReservationOrderByWithRelationInput | Prisma.ReservationOrderByWithRelationInput[]
+  cursor?: Prisma.ReservationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReservationScalarFieldEnum | Prisma.ReservationScalarFieldEnum[]
 }
 
 /**

@@ -24,7 +24,146 @@ export const TableStatus = {
   PREPARING: 'PREPARING',
   BILL_REQUESTED: 'BILL_REQUESTED',
   CLEANING: 'CLEANING',
-  OUT_OF_SERVICE: 'OUT_OF_SERVICE'
+  OUT_OF_SERVICE: 'OUT_OF_SERVICE',
+  READY: 'READY'
 } as const
 
 export type TableStatus = (typeof TableStatus)[keyof typeof TableStatus]
+
+
+export const ReservationStatus = {
+  CONFIRMED: 'CONFIRMED',
+  SEATED: 'SEATED',
+  CANCELLED: 'CANCELLED',
+  COMPLETED: 'COMPLETED',
+  NO_SHOW: 'NO_SHOW'
+} as const
+
+export type ReservationStatus = (typeof ReservationStatus)[keyof typeof ReservationStatus]
+
+
+export const TableOperationType = {
+  MOVE: 'MOVE',
+  TRANSFER: 'TRANSFER',
+  MERGE: 'MERGE',
+  SPLIT: 'SPLIT'
+} as const
+
+export type TableOperationType = (typeof TableOperationType)[keyof typeof TableOperationType]
+
+
+export const OrderType = {
+  DINE_IN: 'DINE_IN',
+  TAKEAWAY: 'TAKEAWAY',
+  DELIVERY: 'DELIVERY'
+} as const
+
+export type OrderType = (typeof OrderType)[keyof typeof OrderType]
+
+
+export const OrderStatus = {
+  DRAFT: 'DRAFT',
+  CONFIRMED: 'CONFIRMED',
+  PREPARING: 'PREPARING',
+  READY: 'READY',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  ARCHIVED: 'ARCHIVED',
+  PLACED: 'PLACED',
+  SERVED: 'SERVED',
+  KOT_SENT: 'KOT_SENT',
+  BILLED: 'BILLED',
+  PAID: 'PAID'
+} as const
+
+export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus]
+
+
+export const BillStatus = {
+  OPEN: 'OPEN',
+  PAID: 'PAID',
+  VOID: 'VOID'
+} as const
+
+export type BillStatus = (typeof BillStatus)[keyof typeof BillStatus]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  CARD: 'CARD',
+  UPI: 'UPI',
+  OTHER: 'OTHER'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const PaymentStatus = {
+  SUCCESS: 'SUCCESS',
+  VOID: 'VOID',
+  REFUNDED: 'REFUNDED'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const PrinterConnection = {
+  NETWORK: 'NETWORK',
+  USB: 'USB',
+  LOCAL_AGENT: 'LOCAL_AGENT',
+  BROWSER: 'BROWSER'
+} as const
+
+export type PrinterConnection = (typeof PrinterConnection)[keyof typeof PrinterConnection]
+
+
+export const PrinterPurpose = {
+  BILL: 'BILL',
+  KOT: 'KOT',
+  KITCHEN: 'KITCHEN'
+} as const
+
+export type PrinterPurpose = (typeof PrinterPurpose)[keyof typeof PrinterPurpose]
+
+
+export const PrintDocumentType = {
+  BILL: 'BILL',
+  RECEIPT: 'RECEIPT',
+  KOT: 'KOT',
+  TEST: 'TEST'
+} as const
+
+export type PrintDocumentType = (typeof PrintDocumentType)[keyof typeof PrintDocumentType]
+
+
+export const PrintJobStatus = {
+  QUEUED: 'QUEUED',
+  PRINTING: 'PRINTING',
+  PRINTED: 'PRINTED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PrintJobStatus = (typeof PrintJobStatus)[keyof typeof PrintJobStatus]
+
+
+export const KOTStatus = {
+  NEW: 'NEW',
+  PREPARING: 'PREPARING',
+  READY: 'READY',
+  SERVED: 'SERVED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type KOTStatus = (typeof KOTStatus)[keyof typeof KOTStatus]
+
+
+export const KOTItemStatus = {
+  QUEUED: 'QUEUED',
+  PREPARING: 'PREPARING',
+  READY: 'READY',
+  SERVED: 'SERVED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type KOTItemStatus = (typeof KOTItemStatus)[keyof typeof KOTItemStatus]

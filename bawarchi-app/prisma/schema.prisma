@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider        = "prisma-client"
+  output          = "../generated/prisma"
+  previewFeatures = ["partialIndexes"]
 }
 
 datasource db {
@@ -21,21 +22,137 @@ model Restaurant {
 }
 
 model Branch {
-  id           String     @id @default(uuid())
-  restaurantId String
-  name         String
-  code         String
-  address      String?
-  phone        String?
-  isActive     Boolean    @default(true)
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  sections     Section[]
-  staff        Staff[]
+  id              String           @id @default(uuid())
+  restaurantId    String
+  name            String
+  code            String
+  address         String?
+  phone           String?
+  isActive        Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  auditLogs       AuditLog[]
+  bills           Bill[]
+  billSequence    BillSequence?
+  restaurant      Restaurant       @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  floors          Floor[]
+  kots            KOT[]
+  kotSequence     KOTSequence?
+  menuAddOns      MenuAddOn[]
+  menuCategories  MenuCategory[]
+  orders          Order[]
+  orderSequence   OrderSequence?
+  printJobs       PrintJob[]
+  printers        Printer[]
+  reservations    Reservation[]
+  sections        Section[]
+  staff           Staff[]
+  tableOperations TableOperation[]
 
   @@unique([restaurantId, code])
   @@index([restaurantId])
+}
+
+model MenuCategory {
+  id           String         @id @default(uuid())
+  branchId     String
+  name         String
+  description  String?
+  displayOrder Int            @default(0)
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  parentId     String?
+  branch       Branch         @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  parent       MenuCategory?  @relation("MenuCategoryHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children     MenuCategory[] @relation("MenuCategoryHierarchy")
+  items        MenuItem[]
+
+  @@unique([branchId, parentId, name])
+  @@index([branchId, displayOrder])
+  @@index([parentId, displayOrder])
+}
+
+model MenuItem {
+  id           String          @id @default(uuid())
+  categoryId   String
+  name         String
+  description  String?
+  displayOrder Int             @default(0)
+  isActive     Boolean         @default(true)
+  isAvailable  Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  imageUrl     String?
+  isVegetarian Boolean         @default(false)
+  category     MenuCategory    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  addOns       MenuItemAddOn[]
+  variants     MenuVariant[]
+  orderItems   OrderItem[]
+
+  @@unique([categoryId, name])
+  @@index([categoryId, displayOrder])
+  @@index([isActive, isAvailable])
+}
+
+model MenuVariant {
+  id           String      @id @default(uuid())
+  itemId       String
+  name         String
+  price        Decimal     @db.Decimal(10, 2)
+  displayOrder Int         @default(0)
+  isActive     Boolean     @default(true)
+  isAvailable  Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  item         MenuItem    @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+
+  @@unique([itemId, name])
+  @@index([itemId, displayOrder])
+}
+
+model MenuAddOn {
+  id           String          @id @default(uuid())
+  branchId     String
+  name         String
+  price        Decimal         @db.Decimal(10, 2)
+  displayOrder Int             @default(0)
+  isActive     Boolean         @default(true)
+  isAvailable  Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  branch       Branch          @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  items        MenuItemAddOn[]
+
+  @@unique([branchId, name])
+  @@index([branchId, displayOrder])
+}
+
+model MenuItemAddOn {
+  itemId  String
+  addOnId String
+  addOn   MenuAddOn @relation(fields: [addOnId], references: [id], onDelete: Cascade)
+  item    MenuItem  @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@id([itemId, addOnId])
+  @@index([addOnId])
+}
+
+model Floor {
+  id           String        @id @default(uuid())
+  branchId     String
+  name         String
+  description  String?
+  displayOrder Int           @default(0)
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tables       DiningTable[]
+  branch       Branch        @relation(fields: [branchId], references: [id])
+  sections     Section[]
+
+  @@index([branchId])
 }
 
 model Section {
@@ -47,46 +164,103 @@ model Section {
   isActive     Boolean       @default(true)
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
+  floorId      String
   tables       DiningTable[]
-  branch       Branch        @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  reservations Reservation[]
+  branch       Branch        @relation(fields: [branchId], references: [id])
+  floor        Floor         @relation(fields: [floorId], references: [id])
 
   @@index([branchId])
+  @@index([floorId])
 }
 
 model DiningTable {
-  id           String      @id @default(uuid())
-  sectionId    String
-  tableNumber  String
-  name         String?
-  capacity     Int         @default(4)
-  status       TableStatus @default(AVAILABLE)
-  displayOrder Int         @default(0)
-  isActive     Boolean     @default(true)
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  section      Section     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  id               String           @id @default(uuid())
+  sectionId        String?
+  tableNumber      String
+  name             String?
+  capacity         Int              @default(4)
+  status           TableStatus      @default(AVAILABLE)
+  displayOrder     Int              @default(0)
+  isActive         Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  floorId          String
+  floor            Floor            @relation(fields: [floorId], references: [id])
+  section          Section?         @relation(fields: [sectionId], references: [id], onDelete: Restrict)
+  orders           Order[]
+  reservations     Reservation[]
+  sourceOperations TableOperation[] @relation("SourceTable")
+  targetOperations TableOperation[] @relation("TargetTable")
 
-  @@unique([sectionId, tableNumber])
+  @@unique([floorId, tableNumber], map: "DiningTable_floor_tableNumber_unique", where: raw("(\"sectionId\" IS NULL)"))
+  @@unique([sectionId, tableNumber], map: "DiningTable_section_tableNumber_unique", where: raw("(\"sectionId\" IS NOT NULL)"))
+  @@index([floorId, tableNumber])
   @@index([sectionId])
   @@index([status])
 }
 
+model Reservation {
+  id            String            @id @default(uuid())
+  branchId      String
+  sectionId     String?
+  tableId       String
+  customerName  String
+  customerPhone String?
+  partySize     Int
+  startsAt      DateTime
+  endsAt        DateTime
+  status        ReservationStatus @default(CONFIRMED)
+  notes         String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  branch        Branch            @relation(fields: [branchId], references: [id])
+  section       Section?          @relation(fields: [sectionId], references: [id], onDelete: Restrict)
+  table         DiningTable       @relation(fields: [tableId], references: [id])
+
+  @@index([branchId, startsAt])
+  @@index([tableId, startsAt])
+}
+
+model TableOperation {
+  id                 String             @id @default(uuid())
+  branchId           String
+  sourceTableId      String
+  targetTableId      String?
+  operation          TableOperationType
+  details            Json?
+  performedByStaffId String?
+  createdAt          DateTime           @default(now())
+  branch             Branch             @relation(fields: [branchId], references: [id])
+  performedBy        Staff?             @relation(fields: [performedByStaffId], references: [id])
+  sourceTable        DiningTable        @relation("SourceTable", fields: [sourceTableId], references: [id])
+  targetTable        DiningTable?       @relation("TargetTable", fields: [targetTableId], references: [id], onDelete: Restrict)
+
+  @@index([branchId, createdAt])
+  @@index([sourceTableId])
+  @@index([targetTableId])
+}
+
 model Staff {
-  id           String      @id @default(uuid())
-  restaurantId String
-  branchId     String?
-  username     String
-  fullName     String
-  phone        String?
-  email        String?
-  passwordHash String?
-  status       StaffStatus @default(ACTIVE)
-  lastLoginAt  DateTime?
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  branch       Branch?     @relation(fields: [branchId], references: [id])
-  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  roles        StaffRole[]
+  id              String           @id @default(uuid())
+  restaurantId    String
+  branchId        String?
+  username        String
+  fullName        String
+  phone           String?
+  email           String?
+  passwordHash    String?
+  status          StaffStatus      @default(ACTIVE)
+  lastLoginAt     DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  auditLogs       AuditLog[]
+  createdOrders   Order[]          @relation("OrderCreatedBy")
+  updatedOrders   Order[]          @relation("OrderUpdatedBy")
+  branch          Branch?          @relation(fields: [branchId], references: [id])
+  restaurant      Restaurant       @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  roles           StaffRole[]
+  tableOperations TableOperation[]
 
   @@unique([restaurantId, username])
   @@index([restaurantId])
@@ -102,6 +276,23 @@ model Role {
   staff       StaffRole[]
 }
 
+model AuditLog {
+  id         String   @id @default(uuid())
+  branchId   String?
+  staffId    String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  branch     Branch?  @relation(fields: [branchId], references: [id])
+  staff      Staff?   @relation(fields: [staffId], references: [id])
+
+  @@index([branchId, createdAt])
+  @@index([entityType, entityId, createdAt])
+  @@index([staffId, createdAt])
+}
+
 model StaffRole {
   staffId String
   roleId  String
@@ -110,6 +301,197 @@ model StaffRole {
 
   @@id([staffId, roleId])
   @@index([roleId])
+}
+
+model OrderSequence {
+  branchId   String @id
+  nextNumber Int    @default(1)
+  branch     Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id              String       @id @default(uuid())
+  branchId        String
+  orderNumber     String       @unique
+  orderType       OrderType
+  status          OrderStatus  @default(DRAFT)
+  tableId         String?
+  customerName    String?
+  customerPhone   String?
+  customerAddress String?
+  notes           String?
+  subtotal        Decimal      @db.Decimal(12, 2)
+  discount        Decimal      @default(0) @db.Decimal(12, 2)
+  tax             Decimal      @default(0) @db.Decimal(12, 2)
+  serviceCharge   Decimal      @default(0) @db.Decimal(12, 2)
+  deliveryCharge  Decimal      @default(0) @db.Decimal(12, 2)
+  total           Decimal      @db.Decimal(12, 2)
+  version         Int          @default(1)
+  idempotencyKey  String?
+  createdById     String?
+  updatedById     String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  bill            Bill?
+  kots            KOT[]
+  branch          Branch       @relation(fields: [branchId], references: [id])
+  createdBy       Staff?       @relation("OrderCreatedBy", fields: [createdById], references: [id])
+  table           DiningTable? @relation(fields: [tableId], references: [id], onDelete: Restrict)
+  updatedBy       Staff?       @relation("OrderUpdatedBy", fields: [updatedById], references: [id])
+  items           OrderItem[]
+
+  @@unique([branchId, idempotencyKey])
+  @@index([branchId, status, createdAt])
+  @@index([tableId, status])
+}
+
+model BillSequence {
+  branchId   String @id
+  nextNumber Int    @default(1)
+  branch     Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+}
+
+model Bill {
+  id             String     @id @default(uuid())
+  branchId       String
+  orderId        String     @unique
+  billNumber     String     @unique
+  subtotal       Decimal    @db.Decimal(12, 2)
+  discount       Decimal    @default(0) @db.Decimal(12, 2)
+  tax            Decimal    @default(0) @db.Decimal(12, 2)
+  serviceCharge  Decimal    @default(0) @db.Decimal(12, 2)
+  deliveryCharge Decimal    @default(0) @db.Decimal(12, 2)
+  total          Decimal    @db.Decimal(12, 2)
+  status         BillStatus @default(OPEN)
+  idempotencyKey String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  branch         Branch     @relation(fields: [branchId], references: [id])
+  order          Order      @relation(fields: [orderId], references: [id])
+  payments       Payment[]
+  printJobs      PrintJob[]
+
+  @@unique([branchId, idempotencyKey])
+  @@index([branchId, status, createdAt])
+}
+
+model Payment {
+  id             String        @id @default(uuid())
+  billId         String
+  method         PaymentMethod
+  amount         Decimal       @db.Decimal(12, 2)
+  status         PaymentStatus @default(SUCCESS)
+  reference      String?
+  idempotencyKey String?
+  createdAt      DateTime      @default(now())
+  bill           Bill          @relation(fields: [billId], references: [id])
+
+  @@unique([billId, idempotencyKey])
+  @@index([billId, createdAt])
+}
+
+model Printer {
+  id             String            @id @default(uuid())
+  branchId       String
+  name           String
+  type           String
+  connectionType PrinterConnection @default(BROWSER)
+  ipAddress      String?
+  port           Int?
+  paperWidth     Int               @default(80)
+  purpose        PrinterPurpose
+  station        String?
+  isActive       Boolean           @default(true)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  printJobs      PrintJob[]
+  branch         Branch            @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@index([branchId, purpose, isActive])
+}
+
+model PrintJob {
+  id             String            @id @default(uuid())
+  branchId       String
+  documentType   PrintDocumentType
+  orderId        String?
+  kotId          String?
+  billId         String?
+  printerId      String?
+  status         PrintJobStatus    @default(QUEUED)
+  attemptCount   Int               @default(0)
+  idempotencyKey String?
+  errorMessage   String?
+  createdAt      DateTime          @default(now())
+  printedAt      DateTime?
+  bill           Bill?             @relation(fields: [billId], references: [id])
+  branch         Branch            @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  printer        Printer?          @relation(fields: [printerId], references: [id])
+
+  @@unique([branchId, idempotencyKey])
+  @@index([branchId, status, createdAt])
+}
+
+model KOTSequence {
+  branchId   String @id
+  nextNumber Int    @default(1)
+  branch     Branch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+}
+
+model KOT {
+  id             String    @id @default(uuid())
+  branchId       String
+  orderId        String
+  kotNumber      String    @unique
+  status         KOTStatus @default(NEW)
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  idempotencyKey String?
+  branch         Branch    @relation(fields: [branchId], references: [id])
+  order          Order     @relation(fields: [orderId], references: [id])
+  items          KOTItem[]
+
+  @@unique([branchId, idempotencyKey])
+  @@index([branchId, status, createdAt])
+  @@index([orderId, createdAt])
+}
+
+model KOTItem {
+  id          String        @id @default(uuid())
+  kotId       String
+  orderItemId String
+  itemName    String
+  variantName String?
+  quantity    Int
+  notes       String?
+  status      KOTItemStatus @default(QUEUED)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  kot         KOT           @relation(fields: [kotId], references: [id], onDelete: Cascade)
+  orderItem   OrderItem     @relation(fields: [orderItemId], references: [id])
+
+  @@index([kotId, status])
+  @@index([orderItemId])
+}
+
+model OrderItem {
+  id            String       @id @default(uuid())
+  orderId       String
+  menuItemId    String?
+  menuVariantId String?
+  itemName      String
+  variantName   String?
+  unitPrice     Decimal      @db.Decimal(10, 2)
+  quantity      Int
+  notes         String?
+  lineTotal     Decimal      @db.Decimal(12, 2)
+  kotItems      KOTItem[]
+  menuItem      MenuItem?    @relation(fields: [menuItemId], references: [id])
+  menuVariant   MenuVariant? @relation(fields: [menuVariantId], references: [id])
+  order         Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
 }
 
 enum StaffStatus {
@@ -125,4 +507,104 @@ enum TableStatus {
   BILL_REQUESTED
   CLEANING
   OUT_OF_SERVICE
+  READY
+}
+
+enum ReservationStatus {
+  CONFIRMED
+  SEATED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum TableOperationType {
+  MOVE
+  TRANSFER
+  MERGE
+  SPLIT
+}
+
+enum OrderType {
+  DINE_IN
+  TAKEAWAY
+  DELIVERY
+}
+
+enum OrderStatus {
+  DRAFT
+  CONFIRMED
+  PREPARING
+  READY
+  COMPLETED
+  CANCELLED
+  ARCHIVED
+  PLACED
+  SERVED
+  KOT_SENT
+  BILLED
+  PAID
+}
+
+enum BillStatus {
+  OPEN
+  PAID
+  VOID
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+  UPI
+  OTHER
+}
+
+enum PaymentStatus {
+  SUCCESS
+  VOID
+  REFUNDED
+}
+
+enum PrinterConnection {
+  NETWORK
+  USB
+  LOCAL_AGENT
+  BROWSER
+}
+
+enum PrinterPurpose {
+  BILL
+  KOT
+  KITCHEN
+}
+
+enum PrintDocumentType {
+  BILL
+  RECEIPT
+  KOT
+  TEST
+}
+
+enum PrintJobStatus {
+  QUEUED
+  PRINTING
+  PRINTED
+  FAILED
+  CANCELLED
+}
+
+enum KOTStatus {
+  NEW
+  PREPARING
+  READY
+  SERVED
+  CANCELLED
+}
+
+enum KOTItemStatus {
+  QUEUED
+  PREPARING
+  READY
+  SERVED
+  CANCELLED
 }
